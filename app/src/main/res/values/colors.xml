@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primaryColor">#00acc1</color>
+    <color name="primaryLightColor">#5ddef4</color>
+    <color name="primaryDarkColor">#007c91</color>
+    <color name="secondaryColor">#ffab91</color>
+    <color name="secondaryLightColor">#ffddc1</color>
+    <color name="secondaryDarkColor">#c97b63</color>
+    <color name="primaryTextColor">#e0f7fa</color>
+    <color name="secondaryTextColor">#eceff1</color>
+
+
+    <!--owl-->
+    <color name="owlyellow1">#ffeb46</color>
+    <color name="owlyellow2">#ffde03</color>
+    <color name="owlyellow3">#ffc000</color>
+
+    <color name="owlblue1">#91a4fc</color>
+    <color name="owlblue2">#0336ff</color>
+    <color name="owlblue3">#0035c9</color>
+    <color name="owlbluedark">#1c1d24</color>
+
+    <color name="owlpink1">#ff7597</color>
+    <color name="owlpink2">#ff0266</color>
+    <color name="owlpink3">#d8004d</color>
+<!--    owl -->
+
+    <color name="greenday">#78ee02</color>
+    <color name="redday">#F44336</color>
+
+    <color name="purpledark">#6700c9</color>
+    <color name="bluedark1">#0000e6</color>
+    <color name="reddark1">#880E4F</color>
+    <color name="reddark2">#B71C1C</color>
+    <color name="bluedark2">#0D47A1</color>
+    <color name="tealdark1">#00695C</color>
+    <color name="tealdark2">#00838F</color>
+    <color name="blueoceandark">#0277BD</color>
+    <color name="limedark">#9E9D24</color>
+    <color name="greendark">#2E7D32</color>
+    <color name="orangedark1">#EF6C00</color>
+    <color name="graydark1">#616161</color>
+    <color name="browndark">#6D4C41</color>
+    <color name="orangedark2">#BF360C</color>
+    <color name="graydark2">#546E7A</color>
+    <color name="greendark2">#2E7D32</color>
+    <color name="orangedark3">#EF6C00</color>
+</resources>

@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">Quiz Infinity</string>
+    <string name="ourbest">Our Best Quizzes</string>
+    <string name="latestquizes">Latest Quizzes</string>
+    <string name="search">Search Quiz</string>
+    <string name="categories">Categories</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="forgot">Forgot Password</string>
+    <string name="score">Score</string>
+    <string name="password">Password</string>
+    <string name="buynow">Buy Now</string>
+    <string name="myquizes">My Quizzes</string>
+    <string name="buycoins">Buy Coins</string>
+    <string name="becomeaninstructor">Become an Instructor</string>
+    <string name="review">Write a review(optional)</string>
+    <string name="sharetoearn">Share to earn 10 Coins @</string>
+
+
+    <string name="psalms">Whoever dwells in the shelter of the Most High
+    will rest in the shadow of the Almighty.[a]
+2
+I will say of the Lord, “He is my refuge and my fortress,
+    my God, in whom I trust.”
+
+3
+Surely he will save you
+    from the fowler’s snare
+    and from the deadly pestilence.
+4
+He will cover you with his feathers,
+    and under his wings you will find refuge;
+    his faithfulness will be your shield and rampart.”</string>
+</resources>
