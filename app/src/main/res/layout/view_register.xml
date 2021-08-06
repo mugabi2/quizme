@@ -5,10 +5,14 @@
     android:id="@+id/register_view"
     android:layout_width="match_parent"
     android:layout_height="0dp"
-    android:background="@color/primaryColor"
+    android:background="@color/owlblue2"
     android:orientation="vertical"
     android:visibility="gone">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="match_parent"
@@ -47,12 +51,15 @@
             android:src="@drawable/ic_close"/>
     </RelativeLayout>
 
-    <com.google.android.material.textfield.TextInputLayout        android:id="@+id/username_layout"
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/relative_layout"
         android:layout_marginLeft="42dp"
         android:layout_marginRight="42dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="20dp"
         android:textColorHint="@color/white">
 
@@ -60,17 +67,37 @@
             android:id="@+id/et_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:textSize="18sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/repeat_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/psd_layout"
+        android:layout_marginLeft="42dp"
+        android:layout_marginRight="42dp"
+        android:layout_marginTop="10dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:textColorHint="@color/white">
+
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/email"
             android:inputType="text"
             android:textSize="18sp"
             app:theme="@style/ReEditTextStyle"/>
-    </com.google.android.material.textfield.TextInputLayout>>
 
-    <com.google.android.material.textfield.TextInputLayout        android:id="@+id/psd_layout"
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/psd_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/username_layout"
         android:layout_marginLeft="42dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginRight="42dp"
         android:layout_marginTop="10dp"
         android:textColorHint="@color/white">
@@ -86,36 +113,18 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout        android:id="@+id/repeat_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/psd_layout"
-        android:layout_marginLeft="42dp"
-        android:layout_marginRight="42dp"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@color/white">
-
-        <EditText
-            android:id="@+id/et_repeat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/register"
-            android:inputType="textPassword"
-            android:textSize="18sp"
-            app:theme="@style/ReEditTextStyle"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/registerbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/username_layout"
         android:layout_alignRight="@+id/username_layout"
         android:layout_below="@id/repeat_layout"
         android:layout_marginTop="14dp"
-        android:background="@color/white"
+        android:backgroundTint="@color/owlblue2"
         android:gravity="center"
         android:text="@string/register"
-        android:textColor="@color/primaryLightColor"/>
-
+        android:textColor="@color/white"/>
+    </LinearLayout>
 </RelativeLayout>

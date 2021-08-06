@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentDetails">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="260dp">
+
+                <ImageView
+                    android:id="@+id/detimage"
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="4dp"
+                    android:contentDescription="@{course.thumbContentDesc}"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/landscape"/>
+
+
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/detinstructphoto"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:importantForAccessibility="no"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/griezo"
+                    app:civ_border_color="@color/owlblue2"
+                    app:civ_border_width="4dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/dettitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Title"
+                    android:textSize="23sp"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/detnumb"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="10 qns"
+                            android:textSize="17dp"/>
+                        <TextView
+                            android:id="@+id/detinstruct"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="by Jeff Bezos"
+                            android:textSize="17dp"/>
+                    </LinearLayout>
+                    <TextView
+                        android:id="@+id/detprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="FREE"
+                        android:padding="5dp"
+                        android:textSize="23sp"
+                        android:textColor="@color/white"
+                        android:background="@drawable/backfree"
+                        android:layout_marginLeft="100dp"
+                        android:textAppearance="?attr/textAppearanceHeadline6" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/addtowishlistbtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:textSize="4pt"
+                        android:text="ADD TO WISHLIST"
+                        app:rippleColor="@color/redday"
+                        android:textColor="@color/redday"
+                        app:icon="@drawable/heartreds"
+                        app:iconTint="@color/redday"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        />
+                    <Button
+                        android:id="@+id/addtocartbtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="50dp"
+                        android:layout_weight="1"
+                        android:text="add to Cart"
+                        android:textSize="5pt"
+                        android:backgroundTint="@color/secondaryColor"
+                        app:icon="@drawable/cart1"
+                        style="@style/Widget.MaterialComponents.Button.Icon"                        />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:textSize="25sp"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+                <TextView
+                    android:id="@+id/detdescript"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/psalms"
+                    android:textSize="18sp"/>
+
+<!--                <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton-->
+<!--                    android:id="@+id/fabbuynow"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="25dp"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:layout_gravity="bottom|right"-->storage
+<!--                    android:text="$15 Buy Now"-->
+<!--                    app:icon="@drawable/addw"-->
+<!--                    android:background="@color/secondaryColor"-->
+<!--                    android:textColor="@color/white"/>-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Rating"
+                    android:textSize="25sp"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <RatingBar
+                    android:id="@+id/detrating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:stepSize="1"
+                    android:isIndicator="true"
+                    android:rating="3"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Feedback"
+                    android:textSize="25sp"
+                    android:textAppearance="?attr/textAppearanceHeadline6" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/detrecycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

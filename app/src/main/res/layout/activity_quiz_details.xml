@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -25,7 +26,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="260dp">
 
@@ -36,11 +37,7 @@
                     android:layout_marginTop="4dp"
                     android:contentDescription="@{course.thumbContentDesc}"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/landscape"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:src="@drawable/landscape"/>
 
                 <CheckBox
                     android:id="@+id/icon"
@@ -48,21 +45,25 @@
                     android:layout_height="40dp"
                     android:button="@drawable/checkwish"
                     app:buttonTint="@android:color/white"
-                    tools:layout_editor_absoluteX="346dp"
-                    tools:layout_editor_absoluteY="190dp" />
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true" />
 
-                <ImageView
-                    android:id="@+id/course_instructor"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@drawable/backinstru"
-                    android:src="@drawable/griezo"
+                <com.mikhaellopez.circularimageview.CircularImageView
+                    android:id="@+id/profilepic"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:importantForAccessibility="no"
-                    app:layout_constraintBottom_toBottomOf="@id/course_image"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/course_image" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/griezo"
+                    app:civ_border_color="@color/owlblue2"
+                    app:civ_border_width="4dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

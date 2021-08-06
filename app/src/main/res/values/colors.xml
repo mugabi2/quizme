@@ -31,7 +31,7 @@
     <color name="owlpink1">#ff7597</color>
     <color name="owlpink2">#ff0266</color>
     <color name="owlpink3">#d8004d</color>
-<!--    owl -->
+    <!--    owl -->
 
     <color name="greenday">#78ee02</color>
     <color name="redday">#F44336</color>
@@ -53,4 +53,9 @@
     <color name="graydark2">#546E7A</color>
     <color name="greendark2">#2E7D32</color>
     <color name="orangedark3">#EF6C00</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
+    <color name="light_blue_A200">#FF40C4FF</color>
+    <color name="light_blue_A400">#FF00B0FF</color>
+    <color name="black_overlay">#66000000</color>
 </resources>

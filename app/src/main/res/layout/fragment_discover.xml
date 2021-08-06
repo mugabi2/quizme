@@ -1,0 +1,1175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragdiscid"
+    tools:context=".fragmentDiscover">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/text_viewgfh_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/categories"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textSize="25dp" />
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrodsfdsllView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cadsffewrwegdgtsfhrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/purpledark">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cadsffgdrgtsfhrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/greenday">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cadsfgdgtsfhrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/orangedark1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cadsffgdgtsfhdsfrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/bluedark1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/casdfgdsffgdgtsfhrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/browndark">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cad12ffgdgtsfhrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/tealdark1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cads23ffgdgtsfhrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/graydark1">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cadsffg132dgtsfhrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/greenday">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cad23234sffgdgtsfhrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/greenday">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cad78987sffgdgtsfhrd"
+                            android:layout_width="170dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="8dp"
+                            android:backgroundTint="@color/greenday">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
+
+                                <!-- Title, secondary and supporting text -->
+                                <TextView
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="Information technology"
+                                    android:textAppearance="?attr/textAppearanceHeadline6"
+                                    android:textSize="15sp" />
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/aero1" />
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/filledTextField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="1dp"
+                android:hint="@string/search">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/latestquizes"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textSize="30dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycle1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:id="@+id/text_view_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/latestquizes"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textSize="30dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:id="@+id/sampleimage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:background="@color/greenday"
+                                        android:text="FREE"
+
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="$5"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="$4"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:background="@color/greenday"
+                                        android:text="FREE"
+
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/latestquizes"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textSize="30dp" />
+
+                <HorizontalScrollView
+                    android:id="@+id/horizontalScrollView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:background="@color/greenday"
+                                        android:text="FREE"
+
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="$5"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="$4"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:background="@color/greenday"
+                                        android:text="FREE"
+
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="5dp"
+                android:paddingRight="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/latestquizes"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:textSize="30dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:background="@color/greenday"
+                                        android:text="FREE"
+
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="$5"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="$4"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/cadsffgdgtsfhrd"
+                            android:layout_width="150dp"
+                            android:layout_height="180dp"
+                            android:layout_margin="8dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <!-- Media -->
+                                <ImageView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="100dp"
+                                    android:contentDescription="string/content_description_media"
+                                    android:scaleType="centerCrop"
+                                    app:srcCompat="@drawable/mozeyradi" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingLeft="10dp"
+                                    android:paddingTop="0dp"
+                                    android:paddingRight="10dp"
+                                    android:paddingBottom="2dp">
+
+                                    <!-- Title, secondary and supporting text -->
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="coarse title"
+                                        android:textAppearance="?attr/textAppearanceHeadline6"
+                                        android:textSize="18sp" />
+
+                                    <TextView
+                                        android:layout_width="60dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:background="@color/greenday"
+                                        android:text="FREE"
+
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary"
+                                        android:textColorHint="@color/white" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="0dp"
+                                        android:text="Instraucto"
+                                        android:textAppearance="?attr/textAppearanceBody2"
+                                        android:textColor="?android:attr/textColorSecondary" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</FrameLayout>

@@ -135,7 +135,7 @@
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@+id/profileicon1"
                     android:layout_toRightOf="@+id/profileicon1"
-                    android:text="@string/myquizes"
+                    android:text="@string/myquizzes"
                     android:textSize="15dp" />
 
                 <TextView
@@ -204,7 +204,7 @@
                     android:layout_marginLeft="15dp"/>
 
                 <TextView
-                    android:id="@+id/profilecompleted"
+                    android:id="@+id/profilebecomeinstructor"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -236,7 +236,7 @@
                     android:layout_marginLeft="15dp"/>
 
                 <TextView
-                    android:id="@+id/profilecompleted"
+                    android:id="@+id/profileshare"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -268,7 +268,7 @@
                     android:layout_marginLeft="15dp"/>
 
                 <TextView
-                    android:id="@+id/profilecompleted"
+                    android:id="@+id/profiletac"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"

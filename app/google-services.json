@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "606782836246",
+    "project_id": "quiz-infinity-b7b39",
+    "storage_bucket": "quiz-infinity-b7b39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:606782836246:android:7cea93608232938984ef37",
+        "android_client_info": {
+          "package_name": "com.example.quizme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "606782836246-krd4s2vku9r98n6ifgsrcgo87am0ja72.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaXGcDCa73bD7dQRwQafpUPRYAJTSnEl8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "606782836246-krd4s2vku9r98n6ifgsrcgo87am0ja72.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

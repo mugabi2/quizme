@@ -1,12 +1,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/page_1"
+        android:id="@+id/botdisc"
         android:enabled="true"
-        android:icon="@drawable/aero1"
-        android:title="text_label_1"/>
+        android:icon="@drawable/air1"
+        android:title="@string/discover"/>
     <item
-        android:id="@+id/page_2"
+        android:id="@+id/botquiz"
         android:enabled="true"
-        android:icon="@drawable/aero1"
-        android:title="string/text_label_2"/>
+        android:icon="@drawable/play1"
+        android:title="@string/myquizzes"/>
+    <item
+        android:id="@+id/botcart"
+        android:enabled="true"
+        android:icon="@drawable/cart1"
+        android:title="@string/cart"/>
 </menu>

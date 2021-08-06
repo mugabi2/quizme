@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragmentProfile">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:background="@color/owlyellow2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/profilepic"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/griezo"
+            android:scaleType="centerCrop"
+            app:civ_border_color="@color/owlblue2"
+            app:civ_border_width="4dp"
+            app:civ_shadow="true"
+            app:civ_shadow_radius="10dp"
+            android:layout_marginTop="25dp"
+            app:civ_shadow_color="#3f51b5"/>
+
+        <TextView
+            android:id="@+id/profilename"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profilepic"
+            android:gravity="center"
+            android:layout_marginTop="-20dp"
+            android:text="name fierst"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/profileemail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profilename"
+            android:gravity="center"
+            android:layout_margin="5dp"
+            android:text="namesdflaj@gmail.com"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/profilepoints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profileemail"
+            android:gravity="center"
+            android:text="2004 pts"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textSize="15sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profilepoints">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:gravity="center"
+                android:padding="0dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:id="@+id/profileicon33"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/heartbo"
+                    android:layout_toLeftOf="@+id/profilecoins"
+                    android:layout_margin="10dp"/>
+                <TextView
+                    android:id="@+id/profilecoins"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="504 coins"
+                    android:textAppearance="?attr/textAppearanceBody2"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/profileicon1"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/heartbo"
+                        android:layout_margin="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"/>
+
+                    <TextView
+                        android:id="@+id/profilecompleted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/profileicon1"
+                        android:layout_toRightOf="@+id/profileicon1"
+                        android:text="@string/myquizzes"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/profilemyquizzes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        android:text="50"
+                        android:textSize="15dp" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:layout_margin="5dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/profileicon2"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/shareb"
+                        android:layout_margin="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"/>
+
+                    <TextView
+                        android:id="@+id/profilecompleted2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/profileicon2"
+                        android:layout_toRightOf="@+id/profileicon2"
+                        android:text="@string/buycoins"
+                        android:textSize="15dp" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:layout_margin="5dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/profileicon3"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/aero1"
+                        android:layout_margin="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"/>
+
+                    <TextView
+                        android:id="@+id/profilebecomeinstructor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/profileicon3"
+                        android:layout_toRightOf="@+id/profileicon3"
+                        android:text="Become an instructor"
+                        android:textSize="15dp" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:layout_margin="5dp">
+                <RelativeLayout
+                    android:id="@+id/shareRelative"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/profileicon4"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/heartbo"
+                        android:layout_margin="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"/>
+
+                    <TextView
+                        android:id="@+id/profileshare"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/profileicon4"
+                        android:layout_toRightOf="@+id/profileicon4"
+                        android:text="@string/sharetoearn"
+                        android:textSize="15dp" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="10dp"
+                android:layout_margin="5dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:id="@+id/profileicon5"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/backbuttonb"
+                        android:layout_margin="10dp"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"/>
+
+                    <TextView
+                        android:id="@+id/profiletac"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/profileicon5"
+                        android:layout_toRightOf="@+id/profileicon5"
+                        android:text="Terms And Conditions"
+                        android:textSize="15dp" />
+
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

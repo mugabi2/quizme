@@ -37,12 +37,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="42dp"
         android:layout_marginRight="42dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent">
 
         <EditText
-            android:hint="@string/username"
-            android:id="@+id/et_username_login"
+            android:hint="@string/email"
+            android:id="@+id/et_emailli"
             android:inputType="text"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -56,13 +57,14 @@
         android:layout_alignRight="@+id/login_username_layout"
         android:layout_below="@+id/login_username_layout"
         android:layout_height="wrap_content"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginTop="20dp"
         android:layout_width="match_parent">
 
 
         <EditText
             android:hint="@string/password"
-            android:id="@+id/et_password_login"
+            android:id="@+id/et_passwordli"
             android:imeOptions="actionGo"
             android:inputType="textPassword"
             android:layout_height="wrap_content"
@@ -73,17 +75,26 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
+        android:id="@+id/loginbtn2"
         android:background="@drawable/btn_normal"
         android:gravity="center"
-        android:id="@+id/btn_login"
         android:layout_below="@+id/login_psd_layout"
         android:layout_centerHorizontal="true"
         android:layout_height="50dp"
         android:layout_marginTop="30dp"
         android:layout_width="160dp"
         android:text="@string/login"
+        android:onClick="login"
         android:textColor="@color/white"/>
 
+    <Button
+        android:id="@+id/loginbtn"
+        android:visibility="invisible"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:backgroundTint="@color/redday"
+        android:layout_centerInParent="true"/>
 
     <TextView
         android:layout_alignParentBottom="true"
@@ -94,4 +105,5 @@
         android:text="@string/forgot"
         android:textColor="@color/white"
         android:textSize="15sp"/>
+
 </RelativeLayout>

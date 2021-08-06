@@ -9,13 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quizme">
-        <activity android:name=".login"
-            android:screenOrientation="portrait">
-
+        <activity android:name=".login">
         </activity>
         <activity
             android:name=".discover"
+            android:label="@string/app_name"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".splash"
@@ -30,6 +33,7 @@
         </activity>
         <activity
             android:name=".answeringQuiz"
+            android:label="@string/quiz"
             android:screenOrientation="portrait" >
         </activity>
         <activity
@@ -38,12 +42,8 @@
         </activity>
         <activity
             android:name=".profile"
+            android:label="@string/profile"
             android:screenOrientation="portrait" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".MainActivity"
