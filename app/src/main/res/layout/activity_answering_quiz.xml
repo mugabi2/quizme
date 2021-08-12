@@ -1,127 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".answeringQuiz">
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
+    <TextView
+        android:id="@+id/anstitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:textColor="@android:color/black"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:text="this is where the title will be%"
+        />
+    <RelativeLayout
+        android:id="@+id/layqn"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
-<!--            <ImageButton-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:layout_gravity="center"-->
-<!--                android:src="@drawable/backbuttonw"/>-->
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="12"
-                android:layout_centerInParent="true"
-                android:backgroundTint="@color/greenday"
-                android:padding="2dp"
-                android:textSize="25sp"/>
-        </RelativeLayout>
+        android:layout_below="@id/anstitle">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+        <TextView
+            android:id="@+id/ansnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:layout_marginTop="25dp"
+            android:textColor="@android:color/black"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="40dp"
+            android:text="50%"
+            android:layout_alignParentLeft="true" />
+
             <ProgressBar
-                android:id="@+id/circular_determinative_pb"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-
+                android:id="@+id/anscircular"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
                 android:indeterminateOnly="false"
-                android:progressDrawable="@drawable/pbcirculardeterminative"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_centerHorizontal="true"
+                android:progressDrawable="@drawable/pbcirculardeterminative"/>
 
             <TextView
-                android:id="@+id/progress_tv"
+                android:id="@+id/ansscore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="25sp"
+                android:layout_marginTop="25dp"
                 android:textColor="@android:color/black"
-                app:layout_constraintBottom_toBottomOf="@+id/circular_determinative_pb"
-                app:layout_constraintEnd_toEndOf="@+id/circular_determinative_pb"
-                app:layout_constraintStart_toStartOf="@+id/circular_determinative_pb"
-                app:layout_constraintTop_toTopOf="@+id/circular_determinative_pb"
+                android:layout_centerHorizontal="true"
                 android:text="50%" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <RelativeLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical">
 
-<!--            <ImageButton-->
-<!--                android:layout_width="50dp"-->
-<!--                android:layout_height="50dp"-->
-<!--                android:visibility="invisible"-->
-<!--                android:src="@drawable/backbuttonw"/>-->
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2"
-                android:layout_centerInParent="true"
-                android:backgroundTint="@color/redday"
-                android:layout_gravity="center"
-                android:padding="5dp"
-                android:onClick="next"
-                android:textSize="25sp"/>
-        </RelativeLayout>
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/ansprogressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="50"
+            android:layout_marginTop="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_below="@id/anscircular"/>
+    </RelativeLayout>
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:background="@color/secondaryColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        android:layout_height="170dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/layqn">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:layout_editor_absoluteX="1dp"
-            tools:layout_editor_absoluteY="1dp">
+            android:paddingTop="50dp"
+            android:paddingRight="50dp"
+            android:paddingLeft="50dp"
+            android:paddingBottom="30dp">
+            <TextView
+                android:id="@+id/ansquestion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:gravity="center"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:text="question"/>
 
-        </LinearLayout>
+        </RelativeLayout>
     </ScrollView>
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/scrollView2">
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginBottom="51dp"
         android:orientation="vertical"
         android:paddingLeft="30dp"
-        android:paddingRight="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2">
+        android:paddingRight="40dp">
 
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/carda"
+            android:onClick="marking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
@@ -145,17 +136,20 @@
                     android:textAppearance="?attr/textAppearanceBody2" />
 
                 <TextView
+                    android:id="@+id/a"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:textSize="20dp"
-                    android:text="wow wwwoo"
+                    android:textSize="18dp"
+                    android:text="a"
                     android:textAppearance="?attr/textAppearanceBody2" />
 
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardb"
+            android:onClick="marking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
@@ -179,17 +173,20 @@
                     android:textAppearance="?attr/textAppearanceBody2" />
 
                 <TextView
+                    android:id="@+id/b"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:textSize="20dp"
-                    android:text="SYDNEY"
+                    android:textSize="18dp"
+                    android:text="b"
                     android:textAppearance="?attr/textAppearanceBody2" />
 
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardc"
+            android:onClick="marking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
@@ -213,17 +210,20 @@
                     android:textAppearance="?attr/textAppearanceBody2" />
 
                 <TextView
+                    android:id="@+id/c"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:textSize="20dp"
-                    android:text="newcastle"
+                    android:textSize="18dp"
+                    android:text="c"
                     android:textAppearance="?attr/textAppearanceBody2" />
 
             </RelativeLayout>
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardd"
+            android:onClick="marking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingRight="10dp"
@@ -246,12 +246,13 @@
                     android:text="D"
                     android:textAppearance="?attr/textAppearanceBody2" />
                 <TextView
+                    android:id="@+id/d"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
                     android:gravity="center"
-                    android:textSize="20dp"
-                    android:text="westminster"
+                    android:textSize="18dp"
+                    android:text="d"
                     android:textAppearance="?attr/textAppearanceBody2" />
 
             </RelativeLayout>
@@ -259,4 +260,5 @@
 
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</RelativeLayout>

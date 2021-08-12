@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Quiz Infinity</string>
+    <string name="app_name">Quiz Fox</string>
     <string name="ourbest">Our Best Quizzes</string>
     <string name="quiz">Quiz</string>
     <string name="profile">Profile</string>
@@ -14,11 +14,16 @@
     <string name="forgot">Forgot Password</string>
     <string name="score">Score</string>
     <string name="password">Password</string>
-    <string name="buynow">Buy Now</string>
+    <string name="buynow">BUY NOW</string>
     <string name="buycoins">Buy Coins</string>
     <string name="discover">Discover</string>
     <string name="myquizzes">My Quizzes</string>
+    <string name="remove">REMOVE</string>
     <string name="cart">Cart</string>
+    <string name="reveal">Reveal</string>
+    <string name="sendfeedback">Send Feedback</string>
+    <string name="watchreveal">Watch video to reveal</string>
+    <string name="revealfor">Reveal for 200 coins</string>
     <string name="becomeaninstructor">Become an Instructor</string>
     <string name="review">Write a review(optional)</string>
     <string name="sharetoearn">Share to earn 10 Coins @</string>

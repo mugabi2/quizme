@@ -35,6 +35,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <Button
+                    android:id="@+id/popright"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -53,7 +54,6 @@
                     android:id="@+id/circular_determinative_pb"
                     android:layout_width="90dp"
                     android:layout_height="90dp"
-
                     android:indeterminateOnly="false"
                     android:progressDrawable="@drawable/pbcirculardeterminative"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -62,7 +62,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/progress_tv"
+                    android:id="@+id/popscore"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="30sp"
@@ -80,6 +80,7 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
                 <Button
+                    android:id="@+id/popwrong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2"
@@ -92,6 +93,7 @@
         </LinearLayout>
 
         <TextView
+            android:id="@+id/poppts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="58pts"
@@ -116,7 +118,7 @@
                 android:textSize="20dp"/>
 
             <RatingBar
-                android:id="@+id/rating"
+                android:id="@+id/poprating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:stepSize="1"
@@ -129,19 +131,11 @@
                 android:text="Please Rate this Quiz"
                 android:gravity="center"
                 android:textSize="14dp"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField"
+
+            <EditText
+                android:id="@+id/popfeedback"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/review">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
+                android:layout_height="wrap_content"/>
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -150,16 +144,30 @@
                 android:background="@color/graydark1" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/popsend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="20dp"
-                android:textSize="20dp"
+                android:layout_margin="5dp"
+                android:textSize="15dp"
+                android:onClick="feedbacking"
+                android:text="@string/sendfeedback"
+                android:textColor="@color/secondaryColor"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="5dp"
+                app:strokeColor="@color/secondaryColor"/>
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/popmyquizzes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="5dp"
+                android:textSize="18dp"
                 android:text="My quizzes"
                 android:textColor="@color/secondaryColor"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:cornerRadius="5dp"
-            app:strokeColor="@color/secondaryColor"/>
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="5dp"
+                app:strokeColor="@color/secondaryColor"/>
         </LinearLayout>
     </LinearLayout>
 

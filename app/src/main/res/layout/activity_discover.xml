@@ -57,7 +57,7 @@
         android:layout_above="@id/bottomnavigation"
         android:layout_marginBottom="16dp"
         android:layout_marginRight="30dp"
-        android:text="@string/buynow"
+        android:text="BUY NOW"
         app:icon="@drawable/addw"
         android:layout_alignParentRight="true" />
 

@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/botreveal"
+        android:enabled="true"
+        android:icon="@drawable/play1"
+        android:title="@string/reveal"/>
+
+    <item
+        android:id="@+id/botquiz"
+        android:enabled="true"
+        android:icon="@drawable/play1"
+        android:title="@string/myquizzes"/>
+    <item
+        android:id="@+id/botcart"
+        android:enabled="true"
+        android:icon="@drawable/cart1"
+        android:title="@string/cart"/>
+</menu>

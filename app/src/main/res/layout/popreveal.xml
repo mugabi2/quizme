@@ -1,0 +1,51 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="170dp"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentEnd="true"
+    android:layout_alignParentRight="true">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/revwatchbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:text="@string/watchreveal"
+                android:textSize="5pt"
+                android:backgroundTint="@color/secondaryColor"
+                app:icon="@drawable/play1"
+                style="@style/Widget.MaterialComponents.Button.Icon" />
+            <Button
+                android:id="@+id/revrevbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:textSize="4pt"
+                android:text="@string/revealfor"
+                app:rippleColor="@color/owlyellow2"
+                android:textColor="@color/owlyellow2"
+                app:icon="@drawable/heartreds"
+                app:iconTint="@color/owlyellow2"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                />
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+</RelativeLayout>

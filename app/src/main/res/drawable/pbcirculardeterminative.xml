@@ -8,7 +8,7 @@
             android:thicknessRatio="20"
             >
 
-            <solid android:color="@android:color/darker_gray"/>
+            <solid android:color="@color/secondaryColor"/>
 
         </shape>
     </item>
