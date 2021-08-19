@@ -6,7 +6,7 @@
     android:id="@+id/root_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/owlyellow2"
+    android:background="@color/primaryColor"
     tools:context="com.quizinfinity.quizme.login">
 
     <com.google.android.material.card.MaterialCardView

@@ -408,10 +408,6 @@ public class login extends AppCompatActivity {
                 });
     }
 
-    public void next(View view){
-        Intent intent=new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
     public void login(View view){
 
         EditText liemail=(EditText)findViewById(R.id.et_emailli);

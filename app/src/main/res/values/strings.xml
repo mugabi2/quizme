@@ -4,9 +4,16 @@
     <string name="quiz">Quiz</string>
     <string name="profile">Profile</string>
     <string name="latestquizes">Latest Quizzes</string>
+    <string name="topfreequizzes">Top Free Quizzes</string>
+    <string name="newquizzes">New Quizzes</string>
+    <string name="toppremium">Top Premium Quizzes</string>
+    <string name="premium">Premium Quizzes</string>
+    <string name="bestranking">Best Ranking Quizzes</string>
+    <string name="bestrated">Best Rated Quizzes</string>
     <string name="search">Search Quiz</string>
     <string name="categories">Categories</string>
     <string name="login">Login</string>
+    <string name="signout">Sign Out</string>
     <string name="register">Register</string>
     <string name="username">Username</string>
     <string name="name">Name</string>
@@ -21,6 +28,8 @@
     <string name="remove">REMOVE</string>
     <string name="cart">Cart</string>
     <string name="reveal">Reveal</string>
+    <string name="price">Price</string>
+    <string name="free">Free</string>
     <string name="sendfeedback">Send Feedback</string>
     <string name="watchreveal">Watch video to reveal</string>
     <string name="revealfor">Reveal for 200 coins</string>

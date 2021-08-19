@@ -1,6 +1,6 @@
 package com.quizinfinity.quizme;
 
-public class format1quiz {
+public class formatSearch{
     String imagequiz;
     String imageinstructor;
     String title;
@@ -13,7 +13,8 @@ public class format1quiz {
     String quizCode;
     String students;
 
-    public format1quiz(String imagequiz, String imageinstructor, String title, String qnnumber, String instructor, String price, String level, String description, String rating, String quizCode, String students) {
+    public formatSearch(String imagequiz, String imageinstructor, String title, String qnnumber, String instructor,
+                        String price, String level, String description, String rating, String quizCode, String students) {
         this.imagequiz = imagequiz;
         this.imageinstructor = imageinstructor;
         this.title = title;
@@ -63,11 +64,12 @@ public class format1quiz {
         return rating;
     }
 
+    public String getQuizCode() {
+        return quizCode;
+    }
+
     public String getStudents() {
         return students;
     }
 
-    public String getQuizCode() {
-        return quizCode;
-    }
 }

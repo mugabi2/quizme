@@ -36,10 +36,10 @@
                 android:layout_weight="1"
                 android:textSize="4pt"
                 android:text="@string/revealfor"
-                app:rippleColor="@color/owlyellow2"
-                android:textColor="@color/owlyellow2"
+                app:rippleColor="@color/primaryColor"
+                android:textColor="@color/primaryColor"
                 app:icon="@drawable/heartreds"
-                app:iconTint="@color/owlyellow2"
+                app:iconTint="@color/primaryColor"
                 style="@style/Widget.MaterialComponents.Button.TextButton"
                 />
         </LinearLayout>

@@ -30,6 +30,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import static com.quizinfinity.quizme.mymethods.decodeBase64;
+
 public class formatMyQuizzesAdapter extends RecyclerView.Adapter<formatMyQuizzesAdapter.formatMyQuizzesviewHolder>{
     private Context context;
     private List<formatMyQuizzes>formatMyQuizzesList;
@@ -38,6 +40,7 @@ public class formatMyQuizzesAdapter extends RecyclerView.Adapter<formatMyQuizzes
     int prog;
     private String prefName = "userDetails";
     SharedPreferences prefs;
+    String bitmapString;
 
 
     public formatMyQuizzesAdapter(Context context, List<formatMyQuizzes> formatMyQuizzesList, onClickInterfaceFormat1 onClickInterfaceFormat1) {
@@ -58,6 +61,9 @@ public class formatMyQuizzesAdapter extends RecyclerView.Adapter<formatMyQuizzes
     @Override
     public void onBindViewHolder(@NonNull @NotNull formatMyQuizzesviewHolder holder, int position) {
         formatMyQuizzes formatMyQuizzes=formatMyQuizzesList.get(position);
+        prefs = context.getApplicationContext().getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        bitmapString = prefs.getString(formatMyQuizzes.getQuizCode() + "bitmap", "");
+
         prog=Integer.parseInt(formatMyQuizzes.getProgress());
         holder.tvQns.setText(formatMyQuizzes.getQnnumber());
         holder.tvTitle.setText(formatMyQuizzes.getTitle());
@@ -70,7 +76,6 @@ public class formatMyQuizzesAdapter extends RecyclerView.Adapter<formatMyQuizzes
                 Toast.makeText(context.getApplicationContext(), formatMyQuizzes.getQuizCode(),Toast.LENGTH_LONG).show();
                 Log.i( "onClick: ", String.valueOf(position));
 
-                prefs = context.getApplicationContext().getSharedPreferences(prefName, Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("answering quiz code",formatMyQuizzes.getQuizCode());
                 editor.putString("answering quiz question number",formatMyQuizzes.getQnnumber());
@@ -81,27 +86,26 @@ public class formatMyQuizzesAdapter extends RecyclerView.Adapter<formatMyQuizzes
                 context.startActivity(intent);
             }
         });
-///////////////////////////////////////////
-        try {
-            storageRef = FirebaseStorage.getInstance().getReference().child(formatMyQuizzes.getImagequiz());
-            final File localfile=File.createTempFile("four","jpg");
-            storageRef.getFile(localfile)
-                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                            Bitmap bitmap= BitmapFactory.decodeFile(localfile.getAbsolutePath());
-                            holder.imageView.setImageBitmap(bitmap);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull @NotNull Exception e) {
+/////////////////////////////////////////////
+        try{
+            int check=decodeBase64("bitmapString").getWidth();
+            if (check==0){
+                Log.i("bitemap", "yes yes");
+            }else{
+                Log.i("bitemap", "no no no");
+            }
+//            // the bitmap is valid & not null or empty
+        }catch (Exception e){
+            Log.i("bitemap", e.toString());
 
-                }
-            });
-        } catch (Exception e) {
-            Log.i("erere", "photo error");
-            e.printStackTrace();
-        }
+//
+        }finally {
+            try {
+                holder.imageView.setImageBitmap(decodeBase64(bitmapString));
+            }catch(Exception eex){
+                Log.i("bitemap eex", eex.toString());
+            }        }
+
     }
 
     @Override

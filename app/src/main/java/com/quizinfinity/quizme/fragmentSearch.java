@@ -1,7 +1,5 @@
 package com.quizinfinity.quizme;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,26 +21,30 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class fragmentCart extends Fragment {
+public class fragmentSearch extends Fragment {
+    String categorisation;
     RecyclerView recyclerView;
-    formatCartAdapter formatCartAdapter;
-    List<formatCart> formatCartList;
+    formatSearchAdapter formatSearchAdapter;
+    List<formatSearch> formatSearchList;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     String fsTitle,fsPrice,fsInstructor,fsPhoto,fsCategory,fsDescription,fshasPhoto,fsInstructorEmail,fsInstructorName,
             fsInstructorPhotoUrl,fsLevel,fsNoOfquestions,fsQuizCode,fsRating,fsStudents;
     private onClickInterfaceFormat1 onClickInterfaceFormat1;
-    SharedPreferences prefs;
-    private String prefName = "userDetails";
-    String myemail;
+
+    public fragmentSearch(String categorisation) {
+        this.categorisation = categorisation;
+    }
+
+    public fragmentSearch() {
+        // Required empty public constructor
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        prefs = getActivity().getSharedPreferences(prefName, Context.MODE_PRIVATE);
-        myemail = prefs.getString("email", "");
-        String myquizReference = myemail + "CART";
-
-        db.collection(myquizReference)
+        db.collection("QUIZZES")
+                .whereEqualTo("category",categorisation )
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -51,27 +53,32 @@ public class fragmentCart extends Fragment {
                             for (QueryDocumentSnapshot document : task.getResult()) {
 //                                Toast.makeText(requireActivity(),document.getId() + " => " + document.getData(),Toast.LENGTH_LONG).show();
 //                                requestArray.add(document.getData().toString());
+                                fsCategory=document.getString("category");
                                 fsDescription=document.getString("description");
+                                fshasPhoto=document.getString("hasPhoto");
                                 fsInstructor=document.getString("instructor");
+                                fsInstructorEmail=document.getString("instructorEmail");
+                                fsInstructorName=document.getString("instructorName");
                                 fsInstructorPhotoUrl=document.getString("instructorPhotoUrl");
                                 fsLevel=document.getString("level");
                                 fsNoOfquestions=document.getString("numberOfQuestions");
                                 fsPhoto=document.getString("photoUrl");
                                 fsQuizCode=document.getString("quizCode");
                                 fsRating=document.getString("rating");
+                                fsStudents=document.getString("students");
                                 fsTitle=document.getString("title");
                                 fsPrice=document.getString("price");
-                                Log.d("*****", fsPhoto+fsInstructorPhotoUrl+fsTitle+fsNoOfquestions+fsInstructor+fsPrice+fsLevel+fsDescription+fsRating+fsQuizCode);
 
-                                formatCartList.add(
-                                        new formatCart(fsPhoto,fsInstructorPhotoUrl,fsTitle,fsNoOfquestions,fsInstructor,fsPrice,fsLevel,fsDescription,fsRating,fsQuizCode)
+//                                recycler1array.add(document.getData().toString());
+                                formatSearchList.add(
+                                        new formatSearch(fsPhoto,fsInstructorPhotoUrl,fsTitle,fsNoOfquestions,fsInstructor,fsPrice,fsLevel,fsDescription,fsRating,fsQuizCode,fsStudents)
                                 );
                             }
 //                            firestoreCallback.onCallback(requestArray);
                         } else {
                             Log.d("milan", "Error getting documents: ", task.getException());
                         }
-                        recycle();
+                        recycleSearch();
                     }
                 });
     }
@@ -80,9 +87,9 @@ public class fragmentCart extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_cart, container, false);
-        formatCartList=new ArrayList<>();
-        recyclerView=(RecyclerView)view.findViewById(R.id.recyclecart);
+        View view= inflater.inflate(R.layout.fragment_search, container, false);
+        formatSearchList=new ArrayList<>();
+        recyclerView=(RecyclerView)view.findViewById(R.id.recyclesearch);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
 
@@ -94,12 +101,9 @@ public class fragmentCart extends Fragment {
         };
         return view;
     }
-    public void recycle(){
-        try {
-            formatCartAdapter=new formatCartAdapter(requireActivity(),formatCartList,onClickInterfaceFormat1);
-            recyclerView.setAdapter(formatCartAdapter);
-        }catch (Exception exception){
-
-        }
+    public void recycleSearch(){
+        formatSearchAdapter=new formatSearchAdapter(requireActivity(),formatSearchList,onClickInterfaceFormat1);
+        recyclerView.setAdapter(formatSearchAdapter);
     }
+
 }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/owlyellow1"
+    android:background="@color/primaryColor"
     tools:context=".splash">
 
     <LinearLayout
@@ -22,7 +22,7 @@
             android:layout_marginTop="-10dp"
             android:text="Quizme"
             android:layout_gravity="center"
-            android:textColor="@color/owlblue2"
+            android:textColor="@color/white"
             android:textSize="20pt" />
 
 
@@ -32,7 +32,7 @@
             android:layout_marginTop="0dp"
             android:text="Exam Certification Aptitude"
             android:layout_gravity="center"
-            android:textColor="@color/owlblue2"
+            android:textColor="@color/white"
             android:textSize="10pt" />
 
     </LinearLayout>

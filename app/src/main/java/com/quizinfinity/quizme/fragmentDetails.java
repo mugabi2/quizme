@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.quizinfinity.quizme.mymethods.decodeBase64;
+
 public class fragmentDetails extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
@@ -44,13 +47,14 @@ public class fragmentDetails extends Fragment {
     private FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private String prefName = "userDetails";
-    String imagequiz, imageinstructor,title, qnnumber, instructor,price,level,description,rating,quizCode;
-    String myemail;
+    String imagequiz, imageinstructor,title, qnnumber, instructor,price,level,description,rating,quizCode,students;
+    String myemail,bitmapString;
     SharedPreferences prefs;
     Map<String, Object> quizdetails;
     Button wishbtn,cartbtn;
 
-    public fragmentDetails(String imagequiz, String imageinstructor, String title, String qnnumber, String instructor, String price, String level, String description, String rating,String quizCode) {
+
+    public fragmentDetails(String imagequiz, String imageinstructor, String title, String qnnumber, String instructor, String price, String level, String description, String rating,String quizCode,String students) {
         this.imagequiz = imagequiz;
         this.imageinstructor = imageinstructor;
         this.title = title;
@@ -61,6 +65,7 @@ public class fragmentDetails extends Fragment {
         this.description = description;
         this.rating = rating;
         this.quizCode = quizCode;
+        this.students=students;
     }
     public fragmentDetails() {
         // Required empty public constructor
@@ -79,6 +84,8 @@ public class fragmentDetails extends Fragment {
         if (getArguments() != null) {
         }
         prefs = getActivity().getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        myemail = prefs.getString("email", "");
+        bitmapString = prefs.getString(quizCode+"bitmap", "");
 //        imageinstructor="USERS/"+imageinstructor;
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("current quiz code",quizCode);
@@ -90,6 +97,7 @@ public class fragmentDetails extends Fragment {
         editor.putString("current quiz level",level);
         editor.putString("current quiz description",description);
         editor.putString("current quiz rating",rating);
+        editor.putString("current quiz students",students);
         editor.apply();
 
         quizdetails = new HashMap<>();
@@ -103,6 +111,7 @@ public class fragmentDetails extends Fragment {
         quizdetails.put("level", level);
         quizdetails.put("description", description);
         quizdetails.put("rating", rating);
+
     }
 
     @Override
@@ -123,14 +132,13 @@ public class fragmentDetails extends Fragment {
 
         if (price.equals("FREE")){
             cartbtn.setEnabled(false);
-            Toast.makeText(requireActivity(),"free disable",Toast.LENGTH_LONG).show();
+//            Toast.makeText(requireActivity(),"free disable",Toast.LENGTH_LONG).show();
         }
                 ((discover)getActivity()).showBuy(price);
 
         wishbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                myemail = prefs.getString("email", "");
 // Initialize Firebase Auth
                 mAuth = FirebaseAuth.getInstance();
                 String wishlistReference = myemail + "WISHLIST";
@@ -228,25 +236,8 @@ public class fragmentDetails extends Fragment {
         descholder.setText(description);
         ratingBar.setRating(Float.parseFloat(rating));
 
-        try {
-            storageRef = FirebaseStorage.getInstance().getReference().child(imagequiz);
-            final File localfile=File.createTempFile("two","jpg");
-            storageRef.getFile(localfile)
-                    .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
-                            Bitmap bitmap= BitmapFactory.decodeFile(localfile.getAbsolutePath());
-                            imageholder.setImageBitmap(bitmap);
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull @NotNull Exception e) {
+            imageholder.setImageBitmap(decodeBase64(bitmapString));
 
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         Log.w("11111111", imageinstructor);
         Log.w("11111111", imagequiz);
 
@@ -271,9 +262,6 @@ public class fragmentDetails extends Fragment {
         }
 
         return view;
-    }
-    public void enroll(){
-        Toast.makeText(getActivity(), quizCode + " enroll from details", Toast.LENGTH_SHORT).show();
     }
     public void onBackPressed(){
         AppCompatActivity activity=(AppCompatActivity)getContext();

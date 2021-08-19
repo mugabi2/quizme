@@ -11,6 +11,8 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -51,9 +53,14 @@ public class discover extends AppCompatActivity {
     boolean fabwishshow=true;
     String buybtnText;
     String myemail;
-    SharedPreferences prefs;
+    SharedPreferences prefs,prefquizquestions,prefquizprogress;
     private onClickInterfaceFormat1 onClickInterfaceFormat1;
+    int countforme=0;
 
+    String prefNameQuizQuestions,prefNameQuizProgress,currentQC;
+    String myname,myphoto,fsa,fsb,fsc,fsd,fscorrect,fsquestion,quizcode,fsnumber;
+    ArrayList<Map> questionsArray=new ArrayList<Map>();
+    SQLiteDatabase mydatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +68,43 @@ public class discover extends AppCompatActivity {
 
         prefs = this.getSharedPreferences(prefName, Context.MODE_PRIVATE);
         myemail = prefs.getString("email", "");
+        currentQC= prefs.getString("current quiz code", "");
+
+//        mydatabase=this.openOrCreateDatabase(myemail,MODE_PRIVATE,null);
+//        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS "+ currentQC+ "(number VARCHAR,a VARCHAR,b VARCHAR,c VARCHAR,d VARCHAR,correct VARCHAR,question VARCHAR)");
+//        mydatabase.execSQL("DROP TABLE IF EXISTS "+currentQC);
+        //        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS currentQC (number VARCHAR, a VARCHAR)");
+//
+//        mydatabase.execSQL("INSERT INTO currentQC (number, a) VALUES ('one','aaa')");
+//        mydatabase.execSQL("INSERT INTO currentQC (number, a) VALUES ('two','bbb')");
+//        mydatabase.execSQL("INSERT INTO currentQC (number, a) VALUES ('tree','ccc')");
+//        Cursor c=mydatabase.rawQuery("SELECT * FROM currentQC",null);
+//        int nameindex=c.getColumnIndex("number");
+//        int ageindex=c.getColumnIndex("a");
+//        c.moveToFirst();
+//
+//        while (!c.isAfterLast()){
+//            Log.i("dbase:",c.getString(nameindex));
+////            Log.i("dbase:",c.getInt(ageindex));
+//            c.moveToNext();
+//        }
+
+//        for (int i = 0; i <3;i++){
+//            String f=String.valueOf(i);
+//            Log.i("inner ",f);
+//        mydatabase.execSQL("INSERT INTO " + currentQC + " (number,a,b,c,d,correct,question) VALUES (" + f + ",'" + f + "','" + f + "','" + f + "','" + f + "','" + f + "','" + f + "')");
+//        }
+//        mydatabase.execSQL("INSERT INTO " + currentQC + " (number,a,b,c,d,correct,question) VALUES (" + "f" + ",'" + "f" + "','" + "f" + "','" + "f" + "','" + "f" + "','" + "f" + "','" + "f" + "')");
+//        mydatabase.execSQL("INSERT INTO " + currentQC + " (number,a,b,c,d,correct,question) VALUES (" + "s" + ",'" + "s" + "','" + "s" + "','" + "s" + "','" + "s" + "','" + "s" + "','" + "s" + "')");
+//        mydatabase.execSQL("INSERT INTO " + currentQC + " (number,a,b,c,d,correct,question) VALUES (" + f + ",'" + f + "','" + f + "','" + f + "','" + f + "','" + f + "','" + f + "')");
+//        String f="first",s="second";
+//        mydatabase.execSQL("INSERT INTO " + currentQC + " (number,a,b,c,d,correct,question) VALUES (" + f + ",'" + f + "','" + f + "','" + f + "','" + f + "','" + f + "','" + f + "')");
+//        mydatabase.execSQL("INSERT INTO " + currentQC + " (number,a,b,c,d,correct,question) VALUES (" + s + ",'" + s + "','" + s + "','" + s + "','" + s + "','" + s + "','" + s + "')");
+
+        prefNameQuizQuestions = currentQC;
+        prefquizquestions = this.getSharedPreferences(prefNameQuizQuestions, Context.MODE_PRIVATE);
+        prefNameQuizProgress = currentQC+"PROGRESS";
+        prefquizprogress = this.getSharedPreferences(prefNameQuizProgress, Context.MODE_PRIVATE);
         //TOOLBAR
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -141,10 +185,6 @@ public class discover extends AppCompatActivity {
                 }
             };
 
-    public void next(View view){
-        Intent intent=new Intent(this,login.class);
-        startActivity(intent);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -165,20 +205,21 @@ public class discover extends AppCompatActivity {
     }
     public void fabbuy(View view){
         buybtnText=fabbuy.getText().toString();
+//                SharedPreferences pref = getSharedPreferences("current quiz code", Context.MODE_PRIVATE);
+        String currentimage= prefs.getString("current quiz image", "");
+        String currenttitle= prefs.getString("current quiz title", "");
+        String currentqnnumb= prefs.getString("current quiz question number", "");
+        String currentinstructor= prefs.getString("current quiz instructor", "");
+        String currentprice= prefs.getString("current quiz price", "");
+        String currentlevel= prefs.getString("current quiz level", "");
+        String currentdesc= prefs.getString("current quiz description", "");
+        String currentrating= prefs.getString("current quiz rating", "");
+        String currentstudents= prefs.getString("current quiz students", "");
+
 //        if (buybtnText.equals(getResources().getString(R.string.buynow))){
             if (buybtnText.equals("BUY NOW")){
             Toast.makeText(discover.this,  " $$$$$$$$$$", Toast.LENGTH_SHORT).show();
         }else {
-//                SharedPreferences pref = getSharedPreferences("current quiz code", Context.MODE_PRIVATE);
-                String currentQC= prefs.getString("current quiz code", "");
-                String currentimage= prefs.getString("current quiz image", "");
-                String currenttitle= prefs.getString("current quiz title", "");
-                String currentqnnumb= prefs.getString("current quiz question number", "");
-                String currentinstructor= prefs.getString("current quiz instructor", "");
-                String currentprice= prefs.getString("current quiz price", "");
-                String currentlevel= prefs.getString("current quiz level", "");
-                String currentdesc= prefs.getString("current quiz description", "");
-                String currentrating= prefs.getString("current quiz rating", "");
 
 //                FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 Map<String, Object> quizdetails = new HashMap<>();
@@ -195,25 +236,90 @@ public class discover extends AppCompatActivity {
                 quizdetails.put("right", "0");
                 quizdetails.put("wrong", "0");
                 quizdetails.put("score", "0");
+                quizdetails.put("archive", "0");
                 quizdetails.put("revealCoins", "0");
                 quizdetails.put("revealWatch", "0");
                 String myquizReference = myemail + "MYQUIZZES";
 
+                SharedPreferences.Editor editor = prefquizprogress.edit();
+                editor.putString("progress", "0");
+                editor.putString("right", "0");
+                editor.putString("wrong", "0");
+                editor.putString("score", "0");
+                editor.putString("revealCoins", "0");
+                editor.putString("revealWatch", "0");
+                editor.apply();
+//UPDATE MY QUIZZES
                 db.collection(myquizReference).document(currentQC)
                         .set(quizdetails)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(discover.this, " added to my quizzes", Toast.LENGTH_SHORT).show();
-                                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new fragmentMyquizzes()).commit();
+                                int studentUpdate=Integer.parseInt(currentstudents)+1;
+                                Map<String, Object> updetails = new HashMap<>();
+                                updetails.put("students", String.valueOf(studentUpdate));
+//                        QUIZZES......students enrolled
+                                db.collection("QUIZZES").document(currentQC)
+                                        .update(updetails)
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                            @Override
+                                            public void onSuccess(Void aVoid) {
+//                                                Toast.makeText(discover.this, " added to my quizzes", Toast.LENGTH_SHORT).show();
+
+//       GETS THE QUIZ QUESTIONS
+                            db.collection(currentQC)
+                                    .get()
+                                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                                    Map<String, Object> innerMap=new HashMap<>();
+                                                    fsa=document.getString("a");
+                                                    fsb=document.getString("b");
+                                                    fsc=document.getString("c");
+                                                    fsd=document.getString("d");
+                                                    fscorrect=document.getString("correct");
+                                                    fsquestion=document.getString("question");
+                                                    fsnumber=document.getId();
+
+                                                    SharedPreferences.Editor editor = prefquizquestions.edit();
+                                                    editor.putString(fsnumber+"a",fsa);
+                                                    editor.putString(fsnumber+"b",fsb);
+                                                    editor.putString(fsnumber+"c",fsc);
+                                                    editor.putString(fsnumber+"d",fsd);
+                                                    editor.putString(fsnumber+"correct",fscorrect);
+                                                    editor.putString(fsnumber+"question",fsquestion);
+                                                    editor.apply();
+//                mydatabase.execSQL("INSERT INTO "+currentQC+" (number,a,b,c,d,correct,question) VALUES ("+fsnumber+",'"+fsa+"','"+fsb+"','"+fsc+"','"+fsd+"','"+fscorrect+"','"+fsquestion+"')");
+                                                   countforme++;
+                                                }
+                                                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new fragmentMyquizzes()).commit();
+
+                                            } else {
+                                                Log.d("milan", "Error getting documents: ", task.getException());
+                                            }
+
+                                        }
+
+                                    });
+                                            }
+                                        })
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Log.w("MY QUIZZES", "Error writing document", e);
+                                            }
+                                        });
                             }
                         })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
-                                Log.w("wishlist", "Error wishlisting", e);
+                                Log.w("MY QUIZZES", "Error ", e);
                             }
                         });
+
         }
     }
     public void fabwish(View view){
@@ -252,5 +358,11 @@ public class discover extends AppCompatActivity {
 
             }
         };
+    }
+
+    public boolean sqlInsert(String fsnumber,String fsa,String fsb,String fsc,String fsd,String fscorrect,String fsquestion){
+    mydatabase.execSQL("INSERT INTO "+currentQC+" (number,a,b,c,d,correct,question) VALUES ("+fsnumber+",'"+fsa+"','"+fsb+"','"+fsc+"','"+fsd+"','"+fscorrect+"','"+fsquestion+"')");
+        Log.i( "inner ",fsquestion);
+        return true;
     }
 }

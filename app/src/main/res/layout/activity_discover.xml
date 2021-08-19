@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
         android:elevation="2dp"
-        android:background="@color/owlyellow2"
+        android:background="@color/primaryColor"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
 

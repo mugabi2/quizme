@@ -1,10 +1,8 @@
 package com.quizinfinity.quizme;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,72 +24,64 @@ import com.google.firebase.storage.StorageReference;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import static com.quizinfinity.quizme.mymethods.encodeTobase64;
-
-public class format1adapter extends RecyclerView.Adapter<format1adapter.format1viewHolder>{
+public class formatSearchAdapter extends RecyclerView.Adapter<formatSearchAdapter.formatSearchHolder>{
     private Context context;
-    private List<format1quiz>format1quizList;
-    StorageReference storageRef;
+    private List<formatSearch>formatSearchList;
+    StorageReference storageRef;;
     onClickInterfaceFormat1 onClickInterfaceFormat1;
-    private String prefName = "userDetails";
-    SharedPreferences prefs;
+    int prog;
 
-    public format1adapter(Context context, List<format1quiz> format1quizList, onClickInterfaceFormat1 onClickInterfaceFormat1) {
+
+    public formatSearchAdapter(Context context, List<formatSearch> formatSearchList, onClickInterfaceFormat1 onClickInterfaceFormat1) {
         this.context = context;
-        this.format1quizList = format1quizList;
+        this.formatSearchList = formatSearchList;
         this.onClickInterfaceFormat1=onClickInterfaceFormat1;
     }
 
     @NonNull
     @NotNull
     @Override
-    public format1viewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+    public formatSearchHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(context);
-        View view=layoutInflater.inflate(R.layout.formatdiscover,null);
-        return new format1viewHolder(view);
+        View view=layoutInflater.inflate(R.layout.formatsearch,null);
+        return new formatSearchHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull format1viewHolder holder, int position) {
-        format1quiz format1quiz=format1quizList.get(position);
-        holder.tvTitle.setText(format1quiz.getTitle());
-        holder.tvPrice.setText(format1quiz.getPrice());
-        holder.tvInstructor.setText(format1quiz.getInstructor());
+    public void onBindViewHolder(@NonNull @NotNull formatSearchHolder holder, int position) {
+        formatSearch formatSearch=formatSearchList.get(position);
+        holder.tvQns.setText(formatSearch.getQnnumber());
+        holder.tvTitle.setText(formatSearch.getTitle());
+        holder.tvPrice.setText(formatSearch.getPrice());
+        holder.tvInstructor.setText(formatSearch.getInstructor());
         holder.linearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onClickInterfaceFormat1.setClick(position);
 //                Toast.makeText(context.getApplicationContext(), String.valueOf(position),Toast.LENGTH_LONG).show();
-                Log.i( "onClick: ", String.valueOf(position));
+//                Log.i( "onClick: ", String.valueOf(position));
 
                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new
-        fragmentDetails(format1quiz.getImagequiz(),format1quiz.getImageinstructor(),format1quiz.getTitle(),format1quiz.getQnnumber(),format1quiz.getInstructor(),format1quiz.getPrice(),format1quiz.getLevel(),format1quiz.getDescription(),format1quiz.getRating(),format1quiz.getQuizCode(),format1quiz.getStudents()))
+                        fragmentDetails(formatSearch.getImagequiz(),formatSearch.getImageinstructor(),formatSearch.getTitle(),formatSearch.getQnnumber(),formatSearch.getInstructor(),formatSearch.getPrice(),formatSearch.getLevel(),formatSearch.getDescription(),formatSearch.getRating(),formatSearch.getQuizCode(),formatSearch.getStudents()))
                         .addToBackStack(null).commit();
 
             }
         });
-
-        prefs = context.getApplicationContext().getSharedPreferences(prefName, Context.MODE_PRIVATE);
 ///////////////////////////////////////////
         try {
-        storageRef = FirebaseStorage.getInstance().getReference().child(format1quiz.getImagequiz());
-            final File localfile=File.createTempFile(format1quiz.getQuizCode(),"jpg");
+            storageRef = FirebaseStorage.getInstance().getReference().child(formatSearch.getImagequiz());
+            final File localfile=File.createTempFile("four","jpg");
             storageRef.getFile(localfile)
                     .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(FileDownloadTask.TaskSnapshot taskSnapshot) {
                             Bitmap bitmap= BitmapFactory.decodeFile(localfile.getAbsolutePath());
                             holder.imageView.setImageBitmap(bitmap);
-                            SharedPreferences.Editor editor = prefs.edit();
-//                            editor.putString("namePreferance", itemNAme);
-                            editor.putString(format1quiz.getQuizCode()+"bitmap", encodeTobase64(bitmap));
-                            editor.commit();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -107,21 +97,21 @@ public class format1adapter extends RecyclerView.Adapter<format1adapter.format1v
 
     @Override
     public int getItemCount() {
-        return format1quizList.size();
+        return formatSearchList.size();
     }
 
-    class format1viewHolder extends RecyclerView.ViewHolder {
+    class formatSearchHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
-        TextView tvTitle,tvPrice,tvInstructor;
+        TextView tvTitle,tvInstructor,tvQns,tvPrice;
         LinearLayout linearLayout;
-        public format1viewHolder(@NonNull @NotNull View itemView) {
+        public formatSearchHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.f1image);
-            tvTitle=itemView.findViewById(R.id.f1title);
-            tvPrice=itemView.findViewById(R.id.f1price);
-            tvInstructor=itemView.findViewById(R.id.f1instructor);
-            linearLayout=itemView.findViewById(R.id.linearformat1);
-
+            imageView=itemView.findViewById(R.id.fsimage);
+            tvTitle=itemView.findViewById(R.id.fstitle);
+            tvQns=itemView.findViewById(R.id.fsqns);
+            tvInstructor=itemView.findViewById(R.id.fsinstruct);
+            tvPrice=itemView.findViewById(R.id.fsprice);
+            linearLayout=itemView.findViewById(R.id.linearsearch);
         }
     }
 }

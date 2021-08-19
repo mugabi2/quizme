@@ -33,7 +33,7 @@ import java.util.List;
 
 import static com.quizinfinity.quizme.mymethods.encodeTobase64;
 
-public class format1adapter extends RecyclerView.Adapter<format1adapter.format1viewHolder>{
+public class format2adapter extends RecyclerView.Adapter<format2adapter.format1viewHolder>{
     private Context context;
     private List<format1quiz>format1quizList;
     StorageReference storageRef;
@@ -41,7 +41,7 @@ public class format1adapter extends RecyclerView.Adapter<format1adapter.format1v
     private String prefName = "userDetails";
     SharedPreferences prefs;
 
-    public format1adapter(Context context, List<format1quiz> format1quizList, onClickInterfaceFormat1 onClickInterfaceFormat1) {
+    public format2adapter(Context context, List<format1quiz> format1quizList, onClickInterfaceFormat1 onClickInterfaceFormat1) {
         this.context = context;
         this.format1quizList = format1quizList;
         this.onClickInterfaceFormat1=onClickInterfaceFormat1;
@@ -52,12 +52,13 @@ public class format1adapter extends RecyclerView.Adapter<format1adapter.format1v
     @Override
     public format1viewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater=LayoutInflater.from(context);
-        View view=layoutInflater.inflate(R.layout.formatdiscover,null);
+        View view=layoutInflater.inflate(R.layout.format3,null);
         return new format1viewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull format1viewHolder holder, int position) {
+//        Log.i( "papapa: ", format1quiz.getImagequiz());
         format1quiz format1quiz=format1quizList.get(position);
         holder.tvTitle.setText(format1quiz.getTitle());
         holder.tvPrice.setText(format1quiz.getPrice());
@@ -71,7 +72,7 @@ public class format1adapter extends RecyclerView.Adapter<format1adapter.format1v
 
                 AppCompatActivity activity=(AppCompatActivity)view.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer, new
-        fragmentDetails(format1quiz.getImagequiz(),format1quiz.getImageinstructor(),format1quiz.getTitle(),format1quiz.getQnnumber(),format1quiz.getInstructor(),format1quiz.getPrice(),format1quiz.getLevel(),format1quiz.getDescription(),format1quiz.getRating(),format1quiz.getQuizCode(),format1quiz.getStudents()))
+                        fragmentDetails(format1quiz.getImagequiz(),format1quiz.getImageinstructor(),format1quiz.getTitle(),format1quiz.getQnnumber(),format1quiz.getInstructor(),format1quiz.getPrice(),format1quiz.getLevel(),format1quiz.getDescription(),format1quiz.getRating(),format1quiz.getQuizCode(),format1quiz.getStudents()))
                         .addToBackStack(null).commit();
 
             }
@@ -80,7 +81,7 @@ public class format1adapter extends RecyclerView.Adapter<format1adapter.format1v
         prefs = context.getApplicationContext().getSharedPreferences(prefName, Context.MODE_PRIVATE);
 ///////////////////////////////////////////
         try {
-        storageRef = FirebaseStorage.getInstance().getReference().child(format1quiz.getImagequiz());
+            storageRef = FirebaseStorage.getInstance().getReference().child(format1quiz.getImagequiz());
             final File localfile=File.createTempFile(format1quiz.getQuizCode(),"jpg");
             storageRef.getFile(localfile)
                     .addOnSuccessListener(new OnSuccessListener<FileDownloadTask.TaskSnapshot>() {
@@ -116,11 +117,11 @@ public class format1adapter extends RecyclerView.Adapter<format1adapter.format1v
         LinearLayout linearLayout;
         public format1viewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
-            imageView=itemView.findViewById(R.id.f1image);
-            tvTitle=itemView.findViewById(R.id.f1title);
-            tvPrice=itemView.findViewById(R.id.f1price);
-            tvInstructor=itemView.findViewById(R.id.f1instructor);
-            linearLayout=itemView.findViewById(R.id.linearformat1);
+            imageView=itemView.findViewById(R.id.f3image);
+            tvTitle=itemView.findViewById(R.id.f3title);
+            tvPrice=itemView.findViewById(R.id.f3price);
+            tvInstructor=itemView.findViewById(R.id.f3instructor);
+            linearLayout=itemView.findViewById(R.id.linearformat3);
 
         }
     }

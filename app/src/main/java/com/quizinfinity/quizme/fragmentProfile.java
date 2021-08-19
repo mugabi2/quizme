@@ -20,6 +20,8 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -68,6 +70,15 @@ public class fragmentProfile extends Fragment {
         RelativeLayout sharebutton=view.findViewById(R.id.shareRelative);
         imageView=view.findViewById(R.id.profilepic);
 
+        ExtendedFloatingActionButton fabsignout=view.findViewById(R.id.signout);
+        fabsignout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(),login.class);
+                startActivity(intent);
+            }
+        });
         nameholder.setText(name);
         emailholder.setText(email);
         ptsholder.setText(pts);
@@ -75,19 +86,6 @@ public class fragmentProfile extends Fragment {
         quizzesholder.setText(quizzes);
 //        TextView shareholder=view.findViewById(R.id.detdescript);
 
-        sharebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent int1 =new Intent(Intent.ACTION_SEND);
-                int1.setType("text/plain");
-                String shareBody ="https://play.google.com/store/apps/details?id=com.stardigitalbikes.digitalbikes" +
-                        " Follow the link above to download Quiz Infinity and input code: "+sharecode+" to earn 20 coins";
-                int1.putExtra(Intent.EXTRA_SUBJECT,shareBody);
-                int1.putExtra(Intent.EXTRA_TEXT,shareBody);
-                startActivity(Intent.createChooser(int1, "Share using"));
-
-            }
-        });
         try {
             storageRef = FirebaseStorage.getInstance().getReference().child(profilepic);
             final File localfile=File.createTempFile("two","jpg");
@@ -110,6 +108,13 @@ public class fragmentProfile extends Fragment {
         }
         return view;
     }
-
-
+    public void share(View view) {
+        Intent int1 = new Intent(Intent.ACTION_SEND);
+        int1.setType("text/plain");
+        String shareBody = "https://play.google.com/store/apps/details?id=com.stardigitalbikes.digitalbikes" +
+                " Follow the link above to download Quiz Infinity and input code: " + sharecode + " to earn 20 coins";
+        int1.putExtra(Intent.EXTRA_SUBJECT, shareBody);
+        int1.putExtra(Intent.EXTRA_TEXT, shareBody);
+        startActivity(Intent.createChooser(int1, "Share using"));
+    }
 }

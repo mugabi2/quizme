@@ -2,6 +2,8 @@ package com.quizinfinity.quizme;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,7 +24,11 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static android.content.Context.MODE_PRIVATE;
 
 public class fragmentMyquizzes extends Fragment {
     String quizImageUrl,title,qnnumber,instructor,progress;
@@ -35,17 +42,53 @@ public class fragmentMyquizzes extends Fragment {
             fsInstructorPhotoUrl,fsLevel,fsNoOfquestions,fsQuizCode,fsRating,fsStudents;
     private onClickInterfaceFormat1 onClickInterfaceFormat1;
     formatMyQuizzesAdapter formatMyQuizzesAdapter;
-    SharedPreferences prefs;
+    SharedPreferences prefs,prefquiz;
     private String prefName = "userDetails";
+    String prefNameQuiz,currentQC;
+    SQLiteDatabase mydatabase;
+    ArrayList<Map> questionsArray=new ArrayList<Map>();
+    Map<String, Object> outerMap=new HashMap<>();
+    Map<String, Object> innerMap=new HashMap<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-            prefs = getActivity().getSharedPreferences(prefName, Context.MODE_PRIVATE);
+            prefs = getActivity().getSharedPreferences(prefName, MODE_PRIVATE);
             myemail = prefs.getString("email", "");
         String myquizReference = myemail + "MYQUIZZES";
+        currentQC= prefs.getString("current quiz code", "");
 
+
+//        mydatabase=getActivity().openOrCreateDatabase(myemail,MODE_PRIVATE,null);
+//        Cursor c=mydatabase.rawQuery("SELECT * FROM "+currentQC,null);
+//        int numberindex=c.getColumnIndex("number");
+//        int aindex=c.getColumnIndex("a");
+//        int bindex=c.getColumnIndex("b");
+//        int cindex=c.getColumnIndex("c");
+//        int dindex=c.getColumnIndex("d");
+//        int correctindex=c.getColumnIndex("correct");
+//        int questionindex=c.getColumnIndex("question");
+//        c.moveToFirst();
+//
+//        while (!c.isAfterLast()){
+////            questionsArray=c.getString(aindex);
+//            innerMap.put("a", c.getString(aindex));
+//            innerMap.put("b", c.getString(bindex));
+//            innerMap.put("c", c.getString(cindex));
+//            innerMap.put("d", c.getString(dindex));
+//            innerMap.put("correct", c.getString(correctindex));
+//            innerMap.put("question", c.getString(questionindex));
+//            questionsArray.add(innerMap);
+//            c.moveToNext();
+//        }
+//        Log.i("inner?:",questionsArray.toString());
+
+
+        prefNameQuiz = currentQC;
+        prefquiz = getActivity().getSharedPreferences(prefNameQuiz, MODE_PRIVATE);
+        String theArray= prefquiz.getString(currentQC, "");
+//        Toast.makeText(getActivity(),theArray,Toast.LENGTH_LONG).show();
         db.collection(myquizReference)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {

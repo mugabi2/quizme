@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    android:background="@color/owlyellow2"
+    android:background="@color/primaryColor"
     android:elevation="4dp">
 
 </androidx.appcompat.widget.Toolbar>

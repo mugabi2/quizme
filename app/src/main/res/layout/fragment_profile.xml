@@ -10,15 +10,15 @@
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:background="@color/owlyellow2"
+        android:background="@color/primaryColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.mikhaellopez.circularimageview.CircularImageView
             android:id="@+id/profilepic"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
             android:layout_centerHorizontal="true"
             android:src="@drawable/griezo"
             android:scaleType="centerCrop"
@@ -110,11 +110,11 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_margin="5dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                     <ImageView
                         android:id="@+id/profileicon1"
                         android:layout_width="30dp"
@@ -145,18 +145,18 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginRight="15dp"
-                        android:text="50"
+                        android:text="0"
                         android:textSize="15dp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:paddingRight="10dp"
                 android:layout_margin="5dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
                     <ImageView
                         android:id="@+id/profileicon2"
                         android:layout_width="30dp"
@@ -181,10 +181,9 @@
 
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
-
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:paddingRight="10dp"
                 android:layout_margin="5dp">
                 <RelativeLayout
@@ -216,7 +215,9 @@
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
+                android:clickable="true"
+                android:onClick="share"
                 android:paddingRight="10dp"
                 android:layout_margin="5dp">
                 <RelativeLayout
@@ -249,7 +250,7 @@
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:paddingRight="10dp"
                 android:layout_margin="5dp">
                 <RelativeLayout
@@ -278,9 +279,24 @@
                         android:textSize="15dp" />
 
                 </RelativeLayout>
+
             </com.google.android.material.card.MaterialCardView>
 
 
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/signout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="@color/secondaryColor"
+                android:textColor="@color/white"
+                app:iconTint="@color/white"
+                android:layout_above="@id/bottomnavigation"
+                android:layout_marginBottom="16dp"
+                android:layout_marginRight="30dp"
+                android:text="@string/signout"
+                app:icon="@drawable/addw"
+                />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

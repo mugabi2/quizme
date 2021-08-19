@@ -8,12 +8,16 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
@@ -28,6 +32,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -50,22 +55,39 @@ public class answeringQuiz extends AppCompatActivity {
     String cprogress,cright,cwrong,ctitle,cscore,crevealCoins,crevealwatch,cquestionnumber;
     TextView popscore,popright,popwrong,poppts;
     String currentCorect;
-    SharedPreferences prefs;
+    SharedPreferences prefs,prefquizquestions,prefquizprogress;
+//    String questionsArray;
     ArrayList<Map> questionsArray=new ArrayList<Map>();
     Map<String, Object> outerMap=new HashMap<>();
+    Map<String, Object> innerMap=new HashMap<>();
     String quesio,numbio,scorio,ai,bi,ci,di,ansio;
     ProgressBar progressBar;
     String myquizReference,stars,feedMsg,currentStars;
     RatingBar ratingBar;
     double doubcurrentstars,doubstars;
+    View viewColor;
 
     CardView carda,cardb,cardc,cardd;
     TextView a,b,c,d,number,question,score;
     EditText textInputLayout;
+    Button popmyquizzes;
+    String currentpts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answering_quiz);
+
+        prefs = getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        myemail = prefs.getString("email", "");
+        myname = prefs.getString("name", "");
+        currentpts = prefs.getString("pts", "");
+        myphoto = prefs.getString("profilePhotoUrl", "");
+        quizcode = prefs.getString("answering quiz code", "");
+        cquestionnumber = prefs.getString("current quiz question number", "");
+        currentStars = prefs.getString("answering quiz rating", "");
+
+        prefquizquestions = this.getSharedPreferences(quizcode, MODE_PRIVATE);
+        prefquizprogress = this.getSharedPreferences(quizcode+"PROGRESS", MODE_PRIVATE);
 
         dialogScore = new Dialog(this);
         dialogScore.setContentView(R.layout.popupscore);
@@ -89,14 +111,13 @@ public class answeringQuiz extends AppCompatActivity {
         cardc=findViewById(R.id.cardc);
         cardd=findViewById(R.id.cardd);
 
-        prefs = getSharedPreferences(prefName, Context.MODE_PRIVATE);
-        myemail = prefs.getString("email", "");
-        myname = prefs.getString("name", "");
-        myphoto = prefs.getString("profilePhotoUrl", "");
-        quizcode = prefs.getString("answering quiz code", "");
-        cquestionnumber = prefs.getString("current quiz question number", "");
-        currentStars = prefs.getString("answering quiz rating", "");
-
+        popmyquizzes=dialogScore.findViewById(R.id.popmyquizzes);
+        popmyquizzes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new fragmentMyquizzes()).commit();
+            }
+        });
 
         ratingBar = dialogScore.findViewById(R.id.poprating);
 //        feedMsg=dialogScore.findViewById(R.id.popfeedback).toString();
@@ -107,40 +128,66 @@ public class answeringQuiz extends AppCompatActivity {
 //      MAINLY FOR PROGRESS
         myquizReference = myemail + "MYQUIZZES";
         int countryer=0;
+//       GETS THE QUIZ QUESTIONS
+
+//        mydatabase=this.openOrCreateDatabase(myemail,MODE_PRIVATE,null);
+//        Cursor c=mydatabase.rawQuery("SELECT * FROM "+quizcode,null);
+//        int numberindex=c.getColumnIndex("number");
+//        int aindex=c.getColumnIndex("a");
+//        int bindex=c.getColumnIndex("b");
+//        int cindex=c.getColumnIndex("c");
+//        int dindex=c.getColumnIndex("d");
+//        int correctindex=c.getColumnIndex("correct");
+//        int questionindex=c.getColumnIndex("question");
+//        c.moveToFirst();
+
+//        while (!c.isAfterLast()){
+////            questionsArray=c.getString(aindex);
+//            innerMap.put("a", c.getString(aindex));
+//            innerMap.put("b", c.getString(bindex));
+//            innerMap.put("c", c.getString(cindex));
+//            innerMap.put("d", c.getString(dindex));
+//            innerMap.put("correct", c.getString(correctindex));
+//            innerMap.put("question", c.getString(questionindex));
+//            questionsArray.add(innerMap);
+//            c.moveToNext();
+//        }
+//        Log.i("inner?:",questionsArray.toString());
+//                        begin();
+
 //        db.collection(quizcode)
-        db.collection(quizcode)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Map<String, Object> innerMap=new HashMap<>();
-                                fsa=document.getString("a");
-                                fsb=document.getString("b");
-                                fsc=document.getString("c");
-                                fsd=document.getString("d");
-                                fscorrect=document.getString("correct");
-                                fsquestion=document.getString("question");
-
-                                innerMap.put("a", fsa);
-                                innerMap.put("b", fsb);
-                                innerMap.put("c", fsc);
-                                innerMap.put("d", fsd);
-                                innerMap.put("correct", fscorrect);
-                                innerMap.put("question", fsquestion);
-                                questionsArray.add(innerMap);
-                                Log.i( "inner ",innerMap.toString());
-                            }
-                            Log.i( "inner",questionsArray.toString());
-                        } else {
-                            Log.d("milan", "Error getting documents: ", task.getException());
-                        }
-//                        Log.i( "1111111111",formatWishList.toString());
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                Map<String, Object> innerMap=new HashMap<>();
+//                                fsa=document.getString("a");
+//                                fsb=document.getString("b");
+//                                fsc=document.getString("c");
+//                                fsd=document.getString("d");
+//                                fscorrect=document.getString("correct");
+//                                fsquestion=document.getString("question");
+//
+//                                innerMap.put("a", fsa);
+//                                innerMap.put("b", fsb);
+//                                innerMap.put("c", fsc);
+//                                innerMap.put("d", fsd);
+//                                innerMap.put("correct", fscorrect);
+//                                innerMap.put("question", fsquestion);
+//                                questionsArray.add(innerMap);
+//                                Log.i( "inner ",innerMap.toString());
+//                            }
+//                            Log.i( "inner",questionsArray.toString());
+//                        } else {
+//                            Log.d("milan", "Error getting documents: ", task.getException());
+//                        }
+////                        Log.i( "1111111111",formatWishList.toString());
                         begin();
-                    }
-
-                });
+//                    }
+//
+//                });
 
     }
 
@@ -162,50 +209,59 @@ public class answeringQuiz extends AppCompatActivity {
                     return true;
                 }
             };
-
+//BEGIN GETS THE PROGRESS
     public void begin(){
-        DocumentReference docRef = db.collection(myquizReference).document(quizcode);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        cscore = document.getString("score");
-                        scorio = document.getString("score");
-                        cprogress = document.getString("progress");
-                        cright = document.getString("right");
-                        cwrong = document.getString("wrong");
-                        crevealCoins = document.getString("revealCoins");
-                        crevealwatch = document.getString("revealWatch");
-                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
-                    } else {
-//                        Log.d( "get failed with ", task.getException());
-                    }
-                } else {
-//                    Log.d( "get failed with ", task.getException());
-                }
-                if (cquestionnumber.equals(cprogress)) {
-                    popsetting();
-                } else {
-                    next(cprogress);
-                }
-            }
-        });
+        cscore = prefquizprogress.getString("score", "");
+        cprogress = prefquizprogress.getString("progress", "");
+        cright = prefquizprogress.getString("right", "");
+        cwrong = prefquizprogress.getString("wrong", "");
+        crevealCoins = prefquizprogress.getString("revealCoins", "");
+        crevealwatch = prefquizprogress.getString("revealWatch", "");
+
+        if (cquestionnumber.equals(cprogress)) {
+//                    popsetting();
+        } else {
+            next(cprogress);
+        }
+//        DocumentReference docRef = db.collection(myquizReference).document(quizcode);
+//        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+//                if (task.isSuccessful()) {
+//                    DocumentSnapshot document = task.getResult();
+//                    if (document.exists()) {
+//                        cscore = document.getString("score");
+//                        cprogress = document.getString("progress");
+//                        cright = document.getString("right");
+//                        cwrong = document.getString("wrong");
+//                        crevealCoins = document.getString("revealCoins");
+//                        crevealwatch = document.getString("revealWatch");
+//                        Log.d("TAG", "DocumentSnapshot data: " + document.getData());
+//                    } else {
+////                        Log.d( "get failed with ", task.getException());
+//                    }
+//                } else {
+////                    Log.d( "get failed with ", task.getException());
+//                }
+//                if (cquestionnumber.equals(cprogress)) {
+////                    popsetting();
+//                } else {
+//                    next(cprogress);
+//                }
+//            }
+//        });
     }
     public void next(String currentprogress){
-        Log.i("next progress", currentprogress);
-        Log.i("next array", questionsArray.toString());
-        Log.i("next progress", currentprogress);
-        outerMap=questionsArray.get(Integer.parseInt(currentprogress));
-        ai=outerMap.get("a").toString();
-        bi=outerMap.get("b").toString();
-        ci=outerMap.get("c").toString();
-        di=outerMap.get("d").toString();
+//        Toast.makeText(answeringQuiz.this, "nexting "+cscore, Toast.LENGTH_SHORT).show();
         int mmh=(Integer.parseInt(currentprogress))+1;
         numbio=Integer.toString(mmh);
-        quesio=outerMap.get("question").toString();
-        currentCorect=outerMap.get("correct").toString();
+        cprogress=numbio;
+        ai = prefquizquestions.getString(numbio +"a", "");
+        bi = prefquizquestions.getString(numbio +"b", "");
+        ci = prefquizquestions.getString(numbio +"c", "");
+        di = prefquizquestions.getString(numbio +"d", "");
+        quesio = prefquizquestions.getString(numbio +"question", "");
+        currentCorect = prefquizquestions.getString(numbio +"correct", "");
 
         a.setText(ai);
         carda.setTag(ai);
@@ -216,32 +272,58 @@ public class answeringQuiz extends AppCompatActivity {
         d.setText(di);
         cardd.setTag(di);
         number.setText(numbio);
-        score.setText(scorio);
+        score.setText(cscore);
         question.setText(quesio);
 
-        double doubprog=1.0*Integer.parseInt(currentprogress),doubcqnnumb=1.0*Integer.parseInt(cquestionnumber),doubupascore;
+        double doubprog=1.0*Integer.parseInt(currentprogress),
+                doubcqnnumb=1.0*Integer.parseInt(cquestionnumber),
+                doubupascore;
         doubupascore=Math.round(doubprog*100/doubcqnnumb);
-        progressBar.setProgress((int)doubupascore);
+        progressBar.setProgress(Integer.parseInt(cscore));
+//        progressBar.setProgress((int)doubupascore);
+        score.setText(cscore);
 //        Toast.makeText(answeringQuiz.this,  "score."+doubupascore, Toast.LENGTH_SHORT).show();
 
     }
     public void marking(View view){
         ansio=view.getTag().toString();
-        int mmh=(Integer.parseInt(cprogress))+1;
-        String upaprog=Integer.toString(mmh);
-        int upascore;
-        double doubright=1.0*Integer.parseInt(cright),doubcqnnumb=1.0*Integer.parseInt(cquestionnumber),doubupascore;
+//        int mmh=(Integer.parseInt(cprogress))+1;
+//        String upaprog=Integer.toString(mmh);
+        viewColor=view;
+        String upaprog=cprogress;int upascore;
+        double doubright=1.0*Integer.parseInt(cright),
+                doubcqnnumb=1.0*Integer.parseInt(cquestionnumber),
+                doubupascore;
+
         if (ansio.equals(currentCorect)){
             view.setBackgroundColor(getResources().getColor(R.color.greenday));
             int mmhr=(Integer.parseInt(cright))+1;
+            cright=String.valueOf(mmhr);
             String uparight=Integer.toString(mmhr);
-            doubupascore=Math.round(doubright*100/doubcqnnumb);
-            updating(uparight,cwrong,upaprog,String.valueOf(doubupascore));
-//            Toast.makeText(answeringQuiz.this,  " correct correct correct", Toast.LENGTH_SHORT).show();
+            doubupascore=Math.round((doubright/doubcqnnumb)*100);
+            Toast.makeText(answeringQuiz.this, +doubright+" divide by "+doubcqnnumb, Toast.LENGTH_SHORT).show();
+
+            int intscore=(int)doubupascore;
+            cscore=String.valueOf(intscore);
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    view.setBackgroundColor(getResources().getColor(R.color.white));
+                    updating(uparight,cwrong,upaprog,cscore);
+                }
+            }, 1000);
         }else {
             view.setBackgroundColor(getResources().getColor(R.color.redday));
             updating(cright,cwrong,upaprog,cscore);
-//            Toast.makeText(answeringQuiz.this,  "wrong", Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    view.setBackgroundColor(getResources().getColor(R.color.white));
+                    updating(cright,cwrong,upaprog,cscore);
+                }
+            }, 1000);
+
         }
     }
     public void updating(String upright,String upwrong,String upprogress,String upscore){
@@ -252,44 +334,75 @@ public class answeringQuiz extends AppCompatActivity {
         quizdetails.put("progress", upprogress);
         quizdetails.put("score", upscore);
 
-        db.collection(myquizReference).document(quizcode)
-                .update(quizdetails)
+        SharedPreferences.Editor editor = prefquizprogress.edit();
+        editor.putString("right", upright);
+        editor.putString("wrong", upwrong);
+        editor.putString("progress", upprogress);
+        editor.putString("score", upscore);
+        editor.apply();
+
+        if (cquestionnumber.equals(upprogress)){
+            popsetting();
+        }else {
+            next(upprogress);
+        }
+
+//        db.collection(myquizReference).document(quizcode)
+//                .update(quizdetails)
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+////                        int mmh=(Integer.parseInt(upprogress))+1;
+////                        String numbo=Integer.toString(mmh);
+//                        if (cquestionnumber.equals(upprogress)){
+//                            popsetting();
+//                        }else {
+//                            next(upprogress);
+//                        }
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.w("updating", "Error updating", e);
+//                    }
+//                });
+    }
+
+    public void popsetting(){
+        dialogScore.show();
+        popscore.setText(cscore);
+        popright.setText(cright);
+        popwrong.setText(cwrong);
+        String pointers=String.valueOf(Integer.parseInt(cright)+Integer.parseInt(currentpts));
+        poppts.setText(cright+" pts");
+
+
+        Map<String, Object> updetails = new HashMap<>();
+        updetails.put("pts", pointers);
+//                        QUIZZES......rating
+        db.collection("USERS").document(myemail)
+                .update(updetails)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Toast.makeText(answeringQuiz.this, cquestionnumber+" with "+upprogress, Toast.LENGTH_SHORT).show();
-//                    next(upprogress);
-                        if (cquestionnumber.equals(upprogress)){
-                            popsetting();
-                        }else {
-                            begin();
-//                            next(upprogress);
-//                            Intent intent = new Intent(answeringQuiz.this, answeringQuiz.class);
-//                            finish();
-//                            startActivity(intent);
-                        }
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putString("pts",pointers);
+                        editor.apply();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w("wishlist", "Error wishlisting", e);
+                        Log.w("luanda", "Error writing document", e);
                     }
                 });
-    }
-    public void popsetting(){
-        popscore.setText(cscore);
-        popright.setText(cright);
-        popwrong.setText(cwrong);
-        poppts.setText(cright+" pts");
-        dialogScore.show();
     }
 
     public void feedbacking(View view){
         feedMsg = textInputLayout.getText().toString();
         stars = String.valueOf(ratingBar.getNumStars());
 // Initialize Firebase Auth
-//        mAuth = FirebaseAuth.getInstance();
         Map<String, Object> userdetails = new HashMap<>();
         userdetails.put("name", myname);
         userdetails.put("email", myemail);
@@ -318,7 +431,7 @@ public class answeringQuiz extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-//                        QUIZZES
+//                        QUIZZES......rating
                         db.collection("QUIZZES").document(quizcode)
                                 .update(updetails)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
