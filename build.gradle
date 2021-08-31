@@ -4,6 +4,11 @@ buildscript {
         kotlin_version = '1.5.10'
     }
     repositories {
+        maven {
+            url 'https://jitpack.io' //Flutterwave repository
+        }
+        jcenter()
+
         google()
         mavenCentral()
     }

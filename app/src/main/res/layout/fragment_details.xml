@@ -170,17 +170,29 @@
                     android:isIndicator="true"
                     android:rating="3"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Feedback"
-                    android:textSize="25sp"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Feedback"-->
+<!--                    android:textSize="25sp"-->
+<!--                    android:textAppearance="?attr/textAppearanceHeadline6" />-->
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/detrecycle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+<!--                <androidx.recyclerview.widget.RecyclerView-->
+<!--                    android:id="@+id/detrecycle"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content" />-->
+
+                <com.google.android.gms.ads.AdView
+                    xmlns:ads="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/adViewdetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/rel1"
+                    ads:adSize="BANNER"
+                    ads:adUnitId="ca-app-pub-6920260159880773/4497689886">
+                </com.google.android.gms.ads.AdView>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

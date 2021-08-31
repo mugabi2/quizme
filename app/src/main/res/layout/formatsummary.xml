@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginBottom="50dp"
+    android:padding="5dp"
+    app:cardCornerRadius="7dp"
+    app:civ_shadow="true"
+    app:civ_shadow_radius="10dp"
+    app:civ_shadow_color="#3f51b5"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:id="@+id/linearsummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <TextView
+            android:id="@+id/sumnumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1."
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="10dp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textSize="20sp"
+            android:layout_alignParentStart="true"/>
+        <TextView
+            android:id="@+id/sumquestion"
+            android:layout_toRightOf="@+id/sumnumber"
+            android:layout_width="wrap_content"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:layout_height="wrap_content"
+            android:text="this is th equyestion"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/sumanswer"
+            android:layout_below="@+id/sumquestion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="35dp"
+            android:text="this is th answer"
+            android:textColor="@color/greendark"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>

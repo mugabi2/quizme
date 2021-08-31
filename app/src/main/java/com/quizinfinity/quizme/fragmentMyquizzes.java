@@ -59,8 +59,12 @@ public class fragmentMyquizzes extends Fragment {
         String myquizReference = myemail + "MYQUIZZES";
         currentQC= prefs.getString("current quiz code", "");
 
+        SharedPreferences prefquizprogress = getActivity().getSharedPreferences("qc0"+"PROGRESS", MODE_PRIVATE);
+        String look = prefquizprogress.getString("progress", "");
+//        Toast.makeText(getActivity(), "qc3..."+look, Toast.LENGTH_SHORT).show();
+        Log.i("progra ",look);
 
-//        mydatabase=getActivity().openOrCreateDatabase(myemail,MODE_PRIVATE,null);
+        //        mydatabase=getActivity().openOrCreateDatabase(myemail,MODE_PRIVATE,null);
 //        Cursor c=mydatabase.rawQuery("SELECT * FROM "+currentQC,null);
 //        int numberindex=c.getColumnIndex("number");
 //        int aindex=c.getColumnIndex("a");
@@ -83,7 +87,6 @@ public class fragmentMyquizzes extends Fragment {
 //            c.moveToNext();
 //        }
 //        Log.i("inner?:",questionsArray.toString());
-
 
         prefNameQuiz = currentQC;
         prefquiz = getActivity().getSharedPreferences(prefNameQuiz, MODE_PRIVATE);
@@ -142,8 +145,18 @@ public class fragmentMyquizzes extends Fragment {
     }
 
     public void recycle(){
+        try{
         formatMyQuizzesAdapter=new formatMyQuizzesAdapter(requireActivity(),formatMyQuizzesList,onClickInterfaceFormat1);
         recyclerView.setAdapter(formatMyQuizzesAdapter);
+            ((discover)getActivity()).hideProgress();
+        }catch(Exception e){
+            Log.d("returnerror", e.toString());
+            try{
+                ((discover)getActivity()).hideProgress();
+            }catch(Exception ex){
+
+            }
+        }
     }
 
 }

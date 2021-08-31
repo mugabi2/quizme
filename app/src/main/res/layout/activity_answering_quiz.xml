@@ -20,6 +20,22 @@
         android:layout_alignParentTop="true"
         android:text="this is where the title will be%"
         />
+
+    <fr.castorflex.android.circularprogressbar.CircularProgressBar
+        android:id="@+id/progbarAns"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:indeterminate="true"
+        android:visibility="visible"
+        app:cpb_color="#FFee44"
+        app:cpb_colors="@array/arrayone"
+        app:cpb_max_sweep_angle="300"
+        app:cpb_min_sweep_angle="10"
+        app:cpb_rotation_speed="1.0"
+        app:cpb_stroke_width="5dp"
+        app:cpb_sweep_speed="1.0" />
+
     <RelativeLayout
         android:id="@+id/layqn"
         android:layout_width="match_parent"
@@ -55,7 +71,7 @@
                 android:layout_marginTop="25dp"
                 android:textColor="@android:color/black"
                 android:layout_centerHorizontal="true"
-                android:text="50%" />
+                android:text="0%" />
 
 
         <ProgressBar
@@ -80,15 +96,15 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="50dp"
+            android:paddingTop="10dp"
             android:paddingRight="50dp"
             android:paddingLeft="50dp"
-            android:paddingBottom="30dp">
+            android:paddingBottom="10dp">
             <TextView
                 android:id="@+id/ansquestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="25dp"
+                android:textSize="22dp"
                 android:gravity="center"
                 android:layout_centerInParent="true"
                 android:layout_centerVertical="true"
@@ -261,4 +277,15 @@
 
     </LinearLayout>
     </ScrollView>
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adViewans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-6920260159880773/4221523560">
+    </com.google.android.gms.ads.AdView>
 </RelativeLayout>

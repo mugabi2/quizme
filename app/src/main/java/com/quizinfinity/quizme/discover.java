@@ -1,6 +1,7 @@
 package com.quizinfinity.quizme;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
@@ -19,7 +20,14 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.flutterwave.raveandroid.RavePayActivity;
+import com.flutterwave.raveandroid.RaveUiManager;
+import com.flutterwave.raveandroid.rave_java_commons.RaveConstants;
+import com.flutterwave.raveandroid.rave_presentation.RavePayManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -38,6 +46,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 public class discover extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -61,6 +70,7 @@ public class discover extends AppCompatActivity {
     String myname,myphoto,fsa,fsb,fsc,fsd,fscorrect,fsquestion,quizcode,fsnumber;
     ArrayList<Map> questionsArray=new ArrayList<Map>();
     SQLiteDatabase mydatabase;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,8 +78,7 @@ public class discover extends AppCompatActivity {
 
         prefs = this.getSharedPreferences(prefName, Context.MODE_PRIVATE);
         myemail = prefs.getString("email", "");
-        currentQC= prefs.getString("current quiz code", "");
-
+        progressBar=findViewById(R.id.progbarDisc);
 //        mydatabase=this.openOrCreateDatabase(myemail,MODE_PRIVATE,null);
 //        mydatabase.execSQL("CREATE TABLE IF NOT EXISTS "+ currentQC+ "(number VARCHAR,a VARCHAR,b VARCHAR,c VARCHAR,d VARCHAR,correct VARCHAR,question VARCHAR)");
 //        mydatabase.execSQL("DROP TABLE IF EXISTS "+currentQC);
@@ -101,10 +110,6 @@ public class discover extends AppCompatActivity {
 //        mydatabase.execSQL("INSERT INTO " + currentQC + " (number,a,b,c,d,correct,question) VALUES (" + f + ",'" + f + "','" + f + "','" + f + "','" + f + "','" + f + "','" + f + "')");
 //        mydatabase.execSQL("INSERT INTO " + currentQC + " (number,a,b,c,d,correct,question) VALUES (" + s + ",'" + s + "','" + s + "','" + s + "','" + s + "','" + s + "','" + s + "')");
 
-        prefNameQuizQuestions = currentQC;
-        prefquizquestions = this.getSharedPreferences(prefNameQuizQuestions, Context.MODE_PRIVATE);
-        prefNameQuizProgress = currentQC+"PROGRESS";
-        prefquizprogress = this.getSharedPreferences(prefNameQuizProgress, Context.MODE_PRIVATE);
         //TOOLBAR
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -162,6 +167,14 @@ public class discover extends AppCompatActivity {
 
                 });
         recycle();
+
+//        Button pay=findViewById(R.id.pay);
+//        pay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////            makePayment();
+//            }
+//        });
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener=
@@ -169,6 +182,7 @@ public class discover extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                     Fragment selectedFragment=null;
+                    showProgress();
                     switch (item.getItemId()){
                         case R.id.botdisc:
                             selectedFragment=new fragmentDiscover();
@@ -198,13 +212,24 @@ public class discover extends AppCompatActivity {
             case R.id.menuprof:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainer,new fragmentProfile())
                         .addToBackStack(null).commit();
-                Toast.makeText(discover.this,"profile profile",Toast.LENGTH_SHORT).show();
+//                Toast.makeText(discover.this,"profile profile",Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
+
     public void fabbuy(View view){
+        showProgress();
         buybtnText=fabbuy.getText().toString();
+        currentQC= prefs.getString("current quiz code", "");
+
+        prefNameQuizQuestions = currentQC;
+        prefquizquestions = this.getSharedPreferences(prefNameQuizQuestions, Context.MODE_PRIVATE);
+        prefNameQuizProgress = currentQC+"PROGRESS";
+        String investig=currentQC+"PROGRESS";
+        prefquizprogress = this.getSharedPreferences(investig, Context.MODE_PRIVATE);
+        Toast.makeText(discover.this,investig, Toast.LENGTH_SHORT).show();
+
 //                SharedPreferences pref = getSharedPreferences("current quiz code", Context.MODE_PRIVATE);
         String currentimage= prefs.getString("current quiz image", "");
         String currenttitle= prefs.getString("current quiz title", "");
@@ -220,6 +245,7 @@ public class discover extends AppCompatActivity {
             if (buybtnText.equals("BUY NOW")){
             Toast.makeText(discover.this,  " $$$$$$$$$$", Toast.LENGTH_SHORT).show();
         }else {
+//                Toast.makeText(discover.this,  currentQC+" AND "+currenttitle, Toast.LENGTH_SHORT).show();
 
 //                FirebaseAuth mAuth = FirebaseAuth.getInstance();
                 Map<String, Object> quizdetails = new HashMap<>();
@@ -322,9 +348,91 @@ public class discover extends AppCompatActivity {
 
         }
     }
+
+//    private void makePayment() {
+//
+//        new RaveUiManager(discover.this)
+//                .setAmount(Double.parseDouble("1"))
+//                .setEmail("samuelmugabi2@gmail.com")
+//                .setCountry("UG")
+//                .setCurrency("USD")
+//                .setfName("Mugabi")
+//                .setlName("sam")
+//                .setNarration("Purchase Goods")
+//                .setPublicKey("FLWPUBK-a06274ca7488cff341ae54f21883600f-X")
+//                .setEncryptionKey("300c56c4cc3cf1290af704c9")
+//                .setTxRef(System.currentTimeMillis() + "Ref")
+//                .acceptMpesaPayments(true)
+//                .acceptAccountPayments(true)
+//                .acceptCardPayments(true)
+//                .allowSaveCardFeature( true)
+////                .acceptGHMobileMoneyPayments(true)
+////                .acceptUgMobileMoneyPayments(true)
+////                .acceptZmMobileMoneyPayments(true)
+////                .acceptRwfMobileMoneyPayments(true)
+////                .acceptUkPayments(true)
+////                .acceptSaBankPayments(true)
+//                .acceptBankTransferPayments(true)
+//                .acceptUssdPayments(true)
+////                .onStagingEnv(true)
+//                .shouldDisplayFee(true)
+////                .showStagingLabel(true)
+//                .initialize();
+//
+//    }
+
+    public void makePayment(int amount){
+        String txRef = myemail +" "+  UUID.randomUUID().toString();
+
+        final String publicKey = "FLWPUBK-a06274ca7488cff341ae54f21883600f-X"; //Get your public key from your account
+        final String encryptionKey = "300c56c4cc3cf1290af704c9"; //Get your encryption key from your account
+
+        /*
+        Create instance of RavePayManager
+         */
+//        new RavePayManager(discover.this)
+//                .setAmount(amount)
+//                .setCountry("UG")
+//                .setCurrency("USD")
+//                .setEmail(myemail)
+//                .setfName("fName")
+//                .setlName("lName")
+//                .setNarration("narration")
+//                .setPublicKey(publicKey)
+//                .setEncryptionKey(encryptionKey)
+//                .setTxRef(txRef)
+//                .acceptAccountPayments(true)
+//                .acceptCardPayments(
+//                        true)
+//                .acceptMpesaPayments(false)
+//                .acceptGHMobileMoneyPayments(false)
+//                .onStagingEnv(false).
+//                allowSaveCardFeature(true)
+////                .withTheme(R.style.DefaultPayTheme)
+//                .initialize();
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RaveConstants.RAVE_REQUEST_CODE && data != null) {
+            String message = data.getStringExtra("response");
+            if (resultCode == RavePayActivity.RESULT_SUCCESS) {
+                Toast.makeText(this, "SUCCESS " + message, Toast.LENGTH_LONG).show();
+            }
+            else if (resultCode == RavePayActivity.RESULT_ERROR) {
+                Toast.makeText(this, "ERROR " + message, Toast.LENGTH_LONG).show();
+            }
+            else if (resultCode == RavePayActivity.RESULT_CANCELLED) {
+                Toast.makeText(this, "CANCELLED " + message, Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+
     public void fabwish(View view){
         dialogWish.show();
     }
+
     public void showBuy(String price) {
         fabwish.hide();
         fabbuy.show();
@@ -333,16 +441,27 @@ public class discover extends AppCompatActivity {
 
             fabbuy.setText("ENROLL");
         }else {
-            Toast.makeText(discover.this,  "buy %%% "+price, Toast.LENGTH_SHORT).show();
+//            Toast.makeText(discover.this,  "buy %%% "+price, Toast.LENGTH_SHORT).show();
 
             fabbuy.setText("BUY NOW");
         }
     }
+
     public void showWish(){
             fabbuy.hide();
             fabwish.show();
     }
+
+    public void showProgress(){
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgress(){
+        progressBar.setVisibility(View.GONE);
+    }
+
     public void recycle(){
+        try{
         Log.w("recyclervvvv", "recyclerecycle");
         recyclerView=(RecyclerView)dialogWish.findViewById(R.id.recyclewish);
         recyclerView.setHasFixedSize(true);
@@ -358,6 +477,9 @@ public class discover extends AppCompatActivity {
 
             }
         };
+        }catch(Exception e){
+            Log.d("returnerror", e.toString());
+        }
     }
 
     public boolean sqlInsert(String fsnumber,String fsa,String fsb,String fsc,String fsd,String fscorrect,String fsquestion){
@@ -365,4 +487,5 @@ public class discover extends AppCompatActivity {
         Log.i( "inner ",fsquestion);
         return true;
     }
+
 }

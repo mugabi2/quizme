@@ -81,8 +81,8 @@ public class fragmentProfile extends Fragment {
         });
         nameholder.setText(name);
         emailholder.setText(email);
-        ptsholder.setText(pts);
-        coinsholder.setText(coins);
+        ptsholder.setText(pts+" pts");
+        coinsholder.setText(coins+" coins");
         quizzesholder.setText(quizzes);
 //        TextView shareholder=view.findViewById(R.id.detdescript);
 

@@ -3,6 +3,8 @@ package com.quizinfinity.quizme;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -24,6 +26,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -44,9 +51,15 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class answeringQuiz extends AppCompatActivity {
+    RecyclerView recyclerViewsummary;
+    formatSummaryAdapter formatSummaryAdapter;
+    List<formatSummary> formatsummaryList;
+    String fsuquestion,fsunumber,fsuanswer;
+
     private FirebaseAuth mAuth;
     Dialog dialogScore,dialogreveal;
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -68,10 +81,13 @@ public class answeringQuiz extends AppCompatActivity {
     View viewColor;
 
     CardView carda,cardb,cardc,cardd;
-    TextView a,b,c,d,number,question,score;
+    TextView a,b,c,d,number,question,score,title;
     EditText textInputLayout;
     Button popmyquizzes;
     String currentpts;
+    ProgressBar progressBarloading;
+    Map<String, Object> quizdetails = new HashMap<>();
+    private AdView mAdViewans;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,9 +101,24 @@ public class answeringQuiz extends AppCompatActivity {
         quizcode = prefs.getString("answering quiz code", "");
         cquestionnumber = prefs.getString("current quiz question number", "");
         currentStars = prefs.getString("answering quiz rating", "");
+        ctitle = prefs.getString("answering quiz title", "");
+//ADS ADS ADS
+        MobileAds.initialize(answeringQuiz.this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
 
+        mAdViewans= findViewById(R.id.adViewans);
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        mAdViewans.loadAd(adRequest1);
+
+//        SUMMARY
+        formatsummaryList=new ArrayList<>();
         prefquizquestions = this.getSharedPreferences(quizcode, MODE_PRIVATE);
-        prefquizprogress = this.getSharedPreferences(quizcode+"PROGRESS", MODE_PRIVATE);
+        String investig=quizcode+"PROGRESS";
+        prefquizprogress = this.getSharedPreferences(investig, MODE_PRIVATE);
+        Toast.makeText(answeringQuiz.this,investig, Toast.LENGTH_SHORT).show();
 
         dialogScore = new Dialog(this);
         dialogScore.setContentView(R.layout.popupscore);
@@ -105,11 +136,14 @@ public class answeringQuiz extends AppCompatActivity {
         question=findViewById(R.id.ansquestion);
         number=findViewById(R.id.ansnumber);
         score=findViewById(R.id.ansscore);
+        title=findViewById(R.id.anstitle);
+        title.setText(ctitle);
         progressBar=findViewById(R.id.ansprogressBar);
         carda=findViewById(R.id.carda);
         cardb=findViewById(R.id.cardb);
         cardc=findViewById(R.id.cardc);
         cardd=findViewById(R.id.cardd);
+        progressBarloading=findViewById(R.id.progbarAns);
 
         popmyquizzes=dialogScore.findViewById(R.id.popmyquizzes);
         popmyquizzes.setOnClickListener(new View.OnClickListener() {
@@ -217,9 +251,10 @@ public class answeringQuiz extends AppCompatActivity {
         cwrong = prefquizprogress.getString("wrong", "");
         crevealCoins = prefquizprogress.getString("revealCoins", "");
         crevealwatch = prefquizprogress.getString("revealWatch", "");
+        Log.d("progra ",cprogress);
 
         if (cquestionnumber.equals(cprogress)) {
-//                    popsetting();
+                    popsetting();
         } else {
             next(cprogress);
         }
@@ -251,8 +286,14 @@ public class answeringQuiz extends AppCompatActivity {
 //            }
 //        });
     }
+//    ADDS 1 AND SETS QUESTION
     public void next(String currentprogress){
-//        Toast.makeText(answeringQuiz.this, "nexting "+cscore, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(answeringQuiz.this, "SCORE "+cscore+" right "+cright+" wr "+cwrong, Toast.LENGTH_LONG).show();
+        try{
+            hideProgress();
+        }catch(Exception ex){
+
+        }
         int mmh=(Integer.parseInt(currentprogress))+1;
         numbio=Integer.toString(mmh);
         cprogress=numbio;
@@ -272,39 +313,50 @@ public class answeringQuiz extends AppCompatActivity {
         d.setText(di);
         cardd.setTag(di);
         number.setText(numbio);
-        score.setText(cscore);
+        score.setText(cscore+"%");
         question.setText(quesio);
 
         double doubprog=1.0*Integer.parseInt(currentprogress),
                 doubcqnnumb=1.0*Integer.parseInt(cquestionnumber),
                 doubupascore;
         doubupascore=Math.round(doubprog*100/doubcqnnumb);
-        progressBar.setProgress(Integer.parseInt(cscore));
+        progressBar.setProgress(Integer.parseInt(cprogress));
+//        progressBar.setProgress(Integer.parseInt(cscore));
 //        progressBar.setProgress((int)doubupascore);
-        score.setText(cscore);
+//        score.setText(cscore);
 //        Toast.makeText(answeringQuiz.this,  "score."+doubupascore, Toast.LENGTH_SHORT).show();
-
+        updateCloud();
     }
     public void marking(View view){
         ansio=view.getTag().toString();
+        try{
+            showProgress();
+        }catch(Exception ex){
+
+        }
+
 //        int mmh=(Integer.parseInt(cprogress))+1;
 //        String upaprog=Integer.toString(mmh);
         viewColor=view;
-        String upaprog=cprogress;int upascore;
-        double doubright=1.0*Integer.parseInt(cright),
-                doubcqnnumb=1.0*Integer.parseInt(cquestionnumber),
+        String upaprog=cprogress;
+        int upascore;
+        double  doubcqnnumb=1.0*Integer.parseInt(cquestionnumber),
                 doubupascore;
+
+        formatsummaryList.add(
+                new formatSummary(numbio,quesio,currentCorect)
+        );
 
         if (ansio.equals(currentCorect)){
             view.setBackgroundColor(getResources().getColor(R.color.greenday));
             int mmhr=(Integer.parseInt(cright))+1;
             cright=String.valueOf(mmhr);
+            double doubright=1.0*Integer.parseInt(cright);
             String uparight=Integer.toString(mmhr);
             doubupascore=Math.round((doubright/doubcqnnumb)*100);
-            Toast.makeText(answeringQuiz.this, +doubright+" divide by "+doubcqnnumb, Toast.LENGTH_SHORT).show();
-
             int intscore=(int)doubupascore;
             cscore=String.valueOf(intscore);
+        Toast.makeText(answeringQuiz.this,  doubright+" / "+doubcqnnumb+" score."+cscore+"%", Toast.LENGTH_SHORT).show();
 
             new Handler().postDelayed(new Runnable() {
                 @Override
@@ -315,20 +367,36 @@ public class answeringQuiz extends AppCompatActivity {
             }, 1000);
         }else {
             view.setBackgroundColor(getResources().getColor(R.color.redday));
-            updating(cright,cwrong,upaprog,cscore);
+            int mmhr=(Integer.parseInt(cwrong))+1;
+            cwrong=String.valueOf(mmhr);
+
+            if(currentCorect.equals(ai)) {
+                carda.setBackgroundColor(getResources().getColor(R.color.greenday));
+            }else if(currentCorect.equals(bi)){
+                cardb.setBackgroundColor(getResources().getColor(R.color.greenday));
+            }else if(currentCorect.equals(ci)){
+                cardc.setBackgroundColor(getResources().getColor(R.color.greenday));
+            }else if(currentCorect.equals(di)){
+                cardd.setBackgroundColor(getResources().getColor(R.color.greenday));
+            }
+
+
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
                     view.setBackgroundColor(getResources().getColor(R.color.white));
+                    carda.setBackgroundColor(getResources().getColor(R.color.white));
+                    cardb.setBackgroundColor(getResources().getColor(R.color.white));
+                    cardc.setBackgroundColor(getResources().getColor(R.color.white));
+                    cardd.setBackgroundColor(getResources().getColor(R.color.white));
                     updating(cright,cwrong,upaprog,cscore);
                 }
-            }, 1000);
+            }, 2000);
 
         }
     }
     public void updating(String upright,String upwrong,String upprogress,String upscore){
 //                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        Map<String, Object> quizdetails = new HashMap<>();
         quizdetails.put("right", upright);
         quizdetails.put("wrong", upwrong);
         quizdetails.put("progress", upprogress);
@@ -371,12 +439,17 @@ public class answeringQuiz extends AppCompatActivity {
 
     public void popsetting(){
         dialogScore.show();
-        popscore.setText(cscore);
+        popscore.setText(cscore+"%");
         popright.setText(cright);
         popwrong.setText(cwrong);
         String pointers=String.valueOf(Integer.parseInt(cright)+Integer.parseInt(currentpts));
         poppts.setText(cright+" pts");
 
+        recyclerViewsummary=dialogScore.findViewById(R.id.recyclesummary);
+        recyclerViewsummary.setHasFixedSize(true);
+        recyclerViewsummary.setLayoutManager(new LinearLayoutManager(answeringQuiz.this, LinearLayoutManager.VERTICAL, false));
+
+        recycleSummary();
 
         Map<String, Object> updetails = new HashMap<>();
         updetails.put("pts", pointers);
@@ -459,4 +532,43 @@ public class answeringQuiz extends AppCompatActivity {
                 });
 
     }
+
+    public void showProgress(){
+        progressBarloading.setVisibility(View.VISIBLE);
+    }
+
+    public void hideProgress(){
+        progressBarloading.setVisibility(View.GONE);
+    }
+
+    public void updateCloud(){
+        try {
+            db.collection(myquizReference).document(quizcode)
+                    .update(quizdetails)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.i("update", "cloud success");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w("updating", "Error updating", e);
+                        }
+                    });
+        }catch (Exception e) {
+            Log.i("update", "cloud failure "+e);
+        }
+    }
+
+    public void recycleSummary(){
+        try {
+            formatSummaryAdapter = new formatSummaryAdapter(answeringQuiz.this, formatsummaryList);
+            recyclerViewsummary.setAdapter(formatSummaryAdapter);
+        }catch(Exception e){
+            Log.d("returnerror", e.toString());
+        }
+    }
+
 }

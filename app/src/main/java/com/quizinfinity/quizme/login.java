@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -65,6 +66,7 @@ public class login extends AppCompatActivity {
     float pixelDensity;
     @BindView(R.id.loginbtn)
     Button mBtnLogin;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,12 +76,12 @@ public class login extends AppCompatActivity {
 // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         sharedPreferences = this.getSharedPreferences(prefName, MODE_PRIVATE);
+        progressBar=findViewById(R.id.progbarLog);
 
         Button loginbtn=findViewById(R.id.loginbtn);
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
 
                 EditText liemail=(EditText)findViewById(R.id.et_emailli);
                 EditText lipassword=(EditText)findViewById(R.id.et_passwordli);
@@ -99,6 +101,8 @@ public class login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please enter password!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
+
                 mAuth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -114,6 +118,7 @@ public class login extends AppCompatActivity {
                                     Log.w("TAG", "signInWithEmail:failure", task.getException());
                                     Toast.makeText(login.this, "Authentication failed.",Toast.LENGTH_LONG).show();
                                 }
+                                progressBar.setVisibility(View.GONE);
                             }
                         });
 
@@ -143,6 +148,7 @@ public class login extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
                     return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
                 //create user
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
@@ -161,6 +167,7 @@ public class login extends AppCompatActivity {
                                 Toast.makeText(login.this, "Authentication failed.",Toast.LENGTH_SHORT).show();
                                 return ;
                                 }
+                                progressBar.setVisibility(View.GONE);
                             }
                         });
 
@@ -364,7 +371,7 @@ public class login extends AppCompatActivity {
         userdetails.put("cashSpent", zero);
         userdetails.put("frees", zero);
         userdetails.put("profilePhoto", zero);
-        userdetails.put("profilePhotoUrl", "");
+        userdetails.put("profilePhotoUrl", "gs://quiz-fox.appspot.com/USERS/default.jpg");
         userdetails.put("instructor", zero);
 
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -376,7 +383,7 @@ public class login extends AppCompatActivity {
         editor.putString("instructor",zero);
         editor.putString("name",name);
         editor.putString("profilePhoto",zero);
-        editor.putString("profilePhotoUrl","");
+        editor.putString("profilePhotoUrl","gs://quiz-fox.appspot.com/USERS/default.jpg");
         editor.putString("pts",zero);
         editor.putString("quizzes",zero);
         editor.putString("shareProfile",zero);

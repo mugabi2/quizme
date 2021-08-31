@@ -1,5 +1,7 @@
 package com.quizinfinity.quizme;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,6 +14,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
@@ -33,7 +37,7 @@ public class fragmentDiscover extends Fragment {
     RecyclerView recyclerViewcateg;
     formatCategAdapter formatCategAdapter;
     List<formatCateg> formatcategList;
-    String fsCategoryTitle,fsNoOfQuizzes;
+    String fsCategoryTitle,fsNoOfQuizzes,withover;
 
     RecyclerView recyclerView;
     format1adapter format1adapter;
@@ -73,6 +77,9 @@ public class fragmentDiscover extends Fragment {
     int counter=0;
 
     private AdView mAdView1,mAdView2,mAdView3,mAdView4;
+
+    private String prefName = "userDetails";
+    SharedPreferences prefs;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,7 +149,9 @@ public class fragmentDiscover extends Fragment {
                         recycle();
                     }
                 });
+        String ranka="2";
         db.collection("QUIZZES")
+                .whereEqualTo("ranking",ranka )
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -261,6 +270,12 @@ public class fragmentDiscover extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_discover, container, false);
         Log.i("222", "fragment view view create");
+//
+//        double deup=8,dedo=9;
+//        double desco=Math.round((deup/dedo)*100);
+//        int intcore=(int)desco;
+//        String ccscore=String.valueOf(intcore);
+//        Toast.makeText(getActivity(),"=== "+ccscore+"%",Toast.LENGTH_SHORT).show();
 
         formatcategList=new ArrayList<>();
         recyclerViewcateg=(RecyclerView)view.findViewById(R.id.recyclecateg);
@@ -286,6 +301,11 @@ public class fragmentDiscover extends Fragment {
         recyclerView4=(RecyclerView)view.findViewById(R.id.recycle4);
         recyclerView4.setHasFixedSize(true);
         recyclerView4.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        prefs = getActivity().getSharedPreferences(prefName, Context.MODE_PRIVATE);
+        withover = prefs.getString("withover", "");
+        TextView withovertv=view.findViewById(R.id.withover);
+        withovertv.setText(".....with over "+withover+" quizzes");
 
         MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
             @Override
@@ -319,24 +339,50 @@ public class fragmentDiscover extends Fragment {
         return view;
     }
     public void recycle(){
+        try {
         format1adapter=new format1adapter(requireActivity(),format1quizList,onClickInterfaceFormat1);
         recyclerView.setAdapter(format1adapter);
+        }catch(Exception e){
+            Log.d("returnerror", e.toString());
+        }
     }
     public void recycle2(){
+        try {
         format2adapter=new format2adapter(requireActivity(),format1quizList2,onClickInterfaceFormat1);
         recyclerView2.setAdapter(format2adapter);
+            ((discover)getActivity()).hideProgress();
+        }catch(Exception e){
+            Log.d("returnerror", e.toString());
+            try{
+            ((discover)getActivity()).hideProgress();
+            }catch(Exception ex){
+
+            }
+        }
     }
     public void recycle3(){
+        try {
         format1adapter=new format1adapter(requireActivity(),format1quizList3,onClickInterfaceFormat1);
         recyclerView3.setAdapter(format1adapter);
+        }catch(Exception e){
+            Log.d("returnerror", e.toString());
+        }
     }
     public void recycle4(){
+        try {
         format1adapter=new format1adapter(requireActivity(),format1quizList4,onClickInterfaceFormat1);
         recyclerView4.setAdapter(format1adapter);
+        }catch(Exception e){
+            Log.d("returnerror", e.toString());
+        }
     }
     public void recycleCateg(){
-        formatCategAdapter=new formatCategAdapter(requireActivity(),formatcategList,onClickInterfaceFormat1);
-        recyclerViewcateg.setAdapter(formatCategAdapter);
+        try {
+            formatCategAdapter = new formatCategAdapter(requireActivity(), formatcategList, onClickInterfaceFormat1);
+            recyclerViewcateg.setAdapter(formatCategAdapter);
+        }catch(Exception e){
+            Log.d("returnerror", e.toString());
+        }
     }
 //    @Override
 //    public void onSaveInstanceState(Bundle state) {

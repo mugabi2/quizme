@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -20,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FileDownloadTask;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -41,7 +43,7 @@ public class formatMyQuizzesAdapter extends RecyclerView.Adapter<formatMyQuizzes
     private String prefName = "userDetails";
     SharedPreferences prefs;
     String bitmapString;
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public formatMyQuizzesAdapter(Context context, List<formatMyQuizzes> formatMyQuizzesList, onClickInterfaceFormat1 onClickInterfaceFormat1) {
         this.context = context;
@@ -73,17 +75,41 @@ public class formatMyQuizzesAdapter extends RecyclerView.Adapter<formatMyQuizzes
             @Override
             public void onClick(View view) {
                 onClickInterfaceFormat1.setClick(position);
-                Toast.makeText(context.getApplicationContext(), formatMyQuizzes.getQuizCode(),Toast.LENGTH_LONG).show();
                 Log.i( "onClick: ", String.valueOf(position));
 
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putString("answering quiz code",formatMyQuizzes.getQuizCode());
                 editor.putString("answering quiz question number",formatMyQuizzes.getQnnumber());
                 editor.putString("answering quiz rating",formatMyQuizzes.getRating());
+                editor.putString("answering quiz title",formatMyQuizzes.getTitle());
                 editor.apply();
+//                Toast.makeText(context.getApplicationContext(), String.valueOf(position)+formatMyQuizzes.getQuizCode(),Toast.LENGTH_LONG).show();
 
                 Intent intent=new Intent(context.getApplicationContext(),answeringQuiz.class);
                 context.startActivity(intent);
+            }
+        });
+        holder.remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String myemail = prefs.getString("email", "");
+                String myquizReference = myemail + "MYQUIZZES";
+                Toast.makeText(context.getApplicationContext(),"Removing "+formatMyQuizzes.getTitle(),Toast.LENGTH_LONG).show();
+                db.collection(myquizReference).document(formatMyQuizzes.getQuizCode())
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(context.getApplicationContext(),formatMyQuizzes.getTitle(),Toast.LENGTH_LONG).show();
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Log.w("wishlist", "Error wishlisting", e);
+                            }
+                        });
+
             }
         });
 /////////////////////////////////////////////
@@ -118,6 +144,7 @@ public class formatMyQuizzesAdapter extends RecyclerView.Adapter<formatMyQuizzes
         TextView tvTitle,tvInstructor,tvQns;
         ProgressBar tvProgress;
         LinearLayout linearLayout;
+        Button remove;
         public formatMyQuizzesviewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.fqimage);
@@ -126,6 +153,7 @@ public class formatMyQuizzesAdapter extends RecyclerView.Adapter<formatMyQuizzes
             tvProgress=itemView.findViewById(R.id.fqprogress);
             tvInstructor=itemView.findViewById(R.id.fqinstruct);
             linearLayout=itemView.findViewById(R.id.linearmyquizzes);
+            remove=itemView.findViewById(R.id.fqremove);
         }
     }
 }

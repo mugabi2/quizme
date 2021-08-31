@@ -11,9 +11,10 @@
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:padding="20dp"
+        android:padding="10dp"
         android:background="@drawable/round_corner_white_fill"
         android:orientation="vertical">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -97,7 +98,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="58pts"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:gravity="center"/>
         <View
@@ -115,12 +116,12 @@
                 android:layout_height="wrap_content"
                 android:text="Feedback"
                 android:gravity="center"
-                android:textSize="20dp"/>
+                android:textSize="17dp"/>
 
             <RatingBar
                 android:id="@+id/poprating"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:stepSize="1"
                 android:layout_gravity="center"
                 android:rating="0"/>
@@ -146,9 +147,9 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/popsend"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
+                android:layout_margin="0dp"
                 android:textSize="15dp"
                 android:onClick="feedbacking"
                 android:text="@string/sendfeedback"
@@ -159,16 +160,27 @@
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/popmyquizzes"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:textSize="18dp"
+                android:layout_margin="0dp"
+                android:textSize="15dp"
                 android:text="My quizzes"
                 android:textColor="@color/secondaryColor"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 app:cornerRadius="5dp"
                 app:strokeColor="@color/secondaryColor"/>
         </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/summary"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="13sp"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclesummary"
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
     </LinearLayout>
 
 

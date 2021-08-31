@@ -14,7 +14,8 @@
         android:theme="@style/Theme.Quizme">
         <activity android:name="com.quizinfinity.quizme.coins">
         </activity>
-        <activity android:name="com.quizinfinity.quizme.login"></activity>
+        <activity android:name="com.quizinfinity.quizme.login"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.quizinfinity.quizme.discover"
             android:label="@string/app_name"

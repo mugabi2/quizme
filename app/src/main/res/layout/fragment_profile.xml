@@ -61,35 +61,36 @@
             android:textAppearance="?attr/textAppearanceBody2"
             android:textSize="15sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/profilepoints">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:padding="0dp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:id="@+id/profileicon33"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/heartbo"
-                    android:layout_toLeftOf="@+id/profilecoins"
-                    android:layout_margin="10dp"/>
-                <TextView
-                    android:id="@+id/profilecoins"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="504 coins"
-                    android:textAppearance="?attr/textAppearanceBody2"
-                    android:textSize="15sp" />
-            </LinearLayout>
-        </RelativeLayout>
+<!--        <RelativeLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@id/profilepoints">-->
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerHorizontal="true"-->
+<!--                android:layout_centerVertical="true"-->
+<!--                android:gravity="center"-->
+<!--                android:padding="0dp"-->
+<!--                android:orientation="horizontal">-->
+<!--                <ImageView-->
+<!--                    android:id="@+id/profileicon33"-->
+<!--                    android:layout_width="20dp"-->
+<!--                    android:layout_height="20dp"-->
+<!--                    android:src="@drawable/heartbo"-->
+<!--                    android:layout_toLeftOf="@+id/profilecoins"-->
+<!--                    android:layout_margin="10dp"/>-->
+<!--                <TextView-->
+<!--                    android:id="@+id/profilecoins"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:gravity="center"-->
+<!--                    android:text="504 coins"-->
+<!--                    android:textAppearance="?attr/textAppearanceBody2"-->
+<!--                    android:textSize="15sp" />-->
+<!--            </LinearLayout>-->
+<!--        </RelativeLayout>-->
+
     </RelativeLayout>
 
     <com.google.android.material.card.MaterialCardView
@@ -119,7 +120,7 @@
                         android:id="@+id/profileicon1"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/heartbo"
+                        android:src="@drawable/profmyquizzesb"
                         android:layout_margin="10dp"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
@@ -157,17 +158,26 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
-                    <ImageView
+<!--                    <ImageView-->
+<!--                        android:id="@+id/profileicon2"-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="30dp"-->
+<!--                        android:src="@drawable/dollar"-->
+<!--                        android:layout_margin="10dp"-->
+<!--                        android:layout_centerVertical="true"-->
+<!--                        android:layout_alignParentStart="true"-->
+<!--                        android:layout_alignParentLeft="true"-->
+<!--                        android:layout_marginRight="15dp"-->
+<!--                        android:layout_marginLeft="15dp"/>-->
+
+                    <com.airbnb.lottie.LottieAnimationView
                         android:id="@+id/profileicon2"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:src="@drawable/shareb"
-                        android:layout_margin="10dp"
-                        android:layout_centerVertical="true"
-                        android:layout_alignParentStart="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginRight="15dp"
-                        android:layout_marginLeft="15dp"/>
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:lottie_rawRes="@raw/coinslot"
+                        android:layout_weight="1"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true" />
 
                     <TextView
                         android:id="@+id/profilecompleted2"
@@ -179,6 +189,16 @@
                         android:text="@string/buycoins"
                         android:textSize="15dp" />
 
+                    <TextView
+                        android:id="@+id/profilecoins"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="15dp"
+                        android:text="0"
+                        android:textSize="15dp" />
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
             <com.google.android.material.card.MaterialCardView
@@ -193,7 +213,7 @@
                         android:id="@+id/profileicon3"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/aero1"
+                        android:src="@drawable/instb"
                         android:layout_margin="10dp"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
@@ -228,7 +248,7 @@
                         android:id="@+id/profileicon4"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/heartbo"
+                        android:src="@drawable/shareb"
                         android:layout_margin="10dp"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
@@ -260,7 +280,7 @@
                         android:id="@+id/profileicon5"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/backbuttonb"
+                        android:src="@drawable/tacb"
                         android:layout_margin="10dp"
                         android:layout_centerVertical="true"
                         android:layout_alignParentStart="true"
@@ -295,7 +315,7 @@
                 android:layout_marginBottom="16dp"
                 android:layout_marginRight="30dp"
                 android:text="@string/signout"
-                app:icon="@drawable/addw"
+                app:icon="@drawable/backbuttonb"
                 />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

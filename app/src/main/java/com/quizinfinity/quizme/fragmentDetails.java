@@ -21,6 +21,11 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -52,6 +57,7 @@ public class fragmentDetails extends Fragment {
     SharedPreferences prefs;
     Map<String, Object> quizdetails;
     Button wishbtn,cartbtn;
+    private AdView mAdViewdet;
 
 
     public fragmentDetails(String imagequiz, String imageinstructor, String title, String qnnumber, String instructor, String price, String level, String description, String rating,String quizCode,String students) {
@@ -130,6 +136,17 @@ public class fragmentDetails extends Fragment {
         wishbtn=view.findViewById(R.id.addtowishlistbtn);
         cartbtn=view.findViewById(R.id.addtocartbtn);
 
+        MobileAds.initialize(getActivity(), new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
+
+        mAdViewdet= view.findViewById(R.id.adViewdetails);
+        AdRequest adRequest1 = new AdRequest.Builder().build();
+        mAdViewdet.loadAd(adRequest1);
+
+//        Toast.makeText(getActivity(), "qc "+quizCode, Toast.LENGTH_SHORT).show();
         if (price.equals("FREE")){
             cartbtn.setEnabled(false);
 //            Toast.makeText(requireActivity(),"free disable",Toast.LENGTH_LONG).show();

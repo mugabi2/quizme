@@ -102,8 +102,12 @@ public class fragmentSearch extends Fragment {
         return view;
     }
     public void recycleSearch(){
+        try{
         formatSearchAdapter=new formatSearchAdapter(requireActivity(),formatSearchList,onClickInterfaceFormat1);
         recyclerView.setAdapter(formatSearchAdapter);
+    }catch(Exception e){
+        Log.d("returnerror", e.toString());
+    }
     }
 
 }

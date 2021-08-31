@@ -3,7 +3,11 @@
     <string name="ourbest">Our Best Quizzes</string>
     <string name="quiz">Quiz</string>
     <string name="profile">Profile</string>
+    <string name="answer">Answer</string>
+    <string name="play">Play</string>
+    <string name="summary">Summary</string>
     <string name="latestquizes">Latest Quizzes</string>
+    <string name="trending">Trending Quizzes</string>
     <string name="topfreequizzes">Top Free Quizzes</string>
     <string name="newquizzes">New Quizzes</string>
     <string name="toppremium">Top Premium Quizzes</string>

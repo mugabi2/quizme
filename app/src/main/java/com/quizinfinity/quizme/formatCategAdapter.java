@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -77,7 +78,7 @@ public class formatCategAdapter extends RecyclerView.Adapter<formatCategAdapter.
 
     class formatCategviewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
-        MaterialCardView linearLayout;
+        LinearLayout linearLayout;
         public formatCategviewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             tvTitle=itemView.findViewById(R.id.categtitle);

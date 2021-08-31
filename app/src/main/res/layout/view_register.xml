@@ -4,12 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/register_view"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:background="@color/owlblue2"
+    android:layout_height="wrap_content"
+    android:background="@color/secondaryColor"
     android:orientation="vertical"
     android:visibility="gone">
 
     <LinearLayout
+        android:id="@+id/mmh"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -45,9 +46,6 @@
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
             android:layout_alignTop="@+id/tv_register"
-            android:layout_centerInParent="true"
-            android:layout_marginEnd="36dp"
-            android:layout_marginRight="36dp"
             android:src="@drawable/ic_close"/>
     </RelativeLayout>
 
@@ -55,7 +53,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/username_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_below="@+id/relative_layout"
         android:layout_marginLeft="42dp"
         android:layout_marginRight="42dp"
@@ -74,7 +72,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/repeat_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_below="@+id/psd_layout"
         android:layout_marginLeft="42dp"
         android:layout_marginRight="42dp"
@@ -88,14 +86,14 @@
             android:layout_height="wrap_content"
             android:hint="@string/email"
             android:inputType="text"
-            android:textSize="18sp"
+            android:textSize="16sp"
             app:theme="@style/ReEditTextStyle"/>
 
     </com.google.android.material.textfield.TextInputLayout>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/psd_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginLeft="42dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_marginRight="42dp"
@@ -112,19 +110,17 @@
             app:theme="@style/ReEditTextStyle"/>
 
     </com.google.android.material.textfield.TextInputLayout>
-
+    </LinearLayout>
 
     <Button
         android:id="@+id/registerbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/username_layout"
-        android:layout_alignRight="@+id/username_layout"
-        android:layout_below="@id/repeat_layout"
         android:layout_marginTop="14dp"
-        android:backgroundTint="@color/owlblue2"
-        android:gravity="center"
+        android:backgroundTint="@color/primaryColor"
         android:text="@string/register"
-        android:textColor="@color/white"/>
-    </LinearLayout>
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/mmh"/>
+
 </RelativeLayout>

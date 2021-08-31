@@ -8,7 +8,6 @@ import android.util.Log;
 import java.io.ByteArrayOutputStream;
 
 public class mymethods {
-
     // method for bitmap to base64
     public static String encodeTobase64(Bitmap image) {
         Bitmap immage = image;

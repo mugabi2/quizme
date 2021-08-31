@@ -98,8 +98,14 @@ public class fragmentCart extends Fragment {
         try {
             formatCartAdapter=new formatCartAdapter(requireActivity(),formatCartList,onClickInterfaceFormat1);
             recyclerView.setAdapter(formatCartAdapter);
-        }catch (Exception exception){
+            ((discover)getActivity()).hideProgress();
+        }catch(Exception e){
+            Log.d("returnerror", e.toString());
+            try{
+                ((discover)getActivity()).hideProgress();
+            }catch(Exception ex){
 
+            }
         }
     }
 }

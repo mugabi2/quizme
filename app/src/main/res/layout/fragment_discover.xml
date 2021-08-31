@@ -5,12 +5,14 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragdiscid"
-    android:paddingTop="50dp"
+    android:paddingTop="0dp"
     tools:context=".fragmentDiscover">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="15dp">
+        android:paddingRight="15dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -25,7 +27,7 @@
                 android:orientation="vertical"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:paddingTop="5dp"
+                android:paddingTop="0dp"
                 android:paddingRight="10dp">
 
                 <TextView
@@ -42,12 +44,23 @@
                     android:layout_height="wrap_content" />
 
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/withover"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/rel0"
+                android:text="...with over 100 quizzes"
+                android:layout_margin="10dp"
+                android:textSize="20sp" />
+
             <LinearLayout
                 android:id="@+id/rel1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_below="@id/rel0"
+                android:layout_below="@id/withover"
                 android:layout_centerHorizontal="true"
                 android:paddingTop="5dp"
                 android:paddingRight="10dp">
@@ -58,7 +71,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/topfreequizzes"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="22sp" />
+                    android:textSize="20sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycle1"
@@ -90,9 +103,9 @@
                     android:id="@+id/title2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/premium"
+                    android:text="@string/trending"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="22sp" />
+                    android:textSize="20sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycle2"
@@ -130,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/bestrated"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="22sp" />
+                    android:textSize="20sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycle3"
@@ -165,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/latestquizes"
                     android:textAppearance="?attr/textAppearanceHeadline6"
-                    android:textSize="22sp" />
+                    android:textSize="20sp" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycle4"
