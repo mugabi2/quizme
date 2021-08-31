@@ -161,12 +161,11 @@ public class discover extends AppCompatActivity {
                         } else {
                             Log.d("milan", "Error getting documents: ", task.getException());
                         }
-//                        Log.i( "1111111111",formatWishList.toString());
-
+                        Log.i( "1111111111",formatWishList.toString());
+                        Toast.makeText(discover.this,formatWishList.toString(),Toast.LENGTH_LONG).show();
                     }
 
                 });
-        recycle();
 
 //        Button pay=findViewById(R.id.pay);
 //        pay.setOnClickListener(new View.OnClickListener() {
@@ -431,6 +430,11 @@ public class discover extends AppCompatActivity {
 
     public void fabwish(View view){
         dialogWish.show();
+        recyclerView=(RecyclerView)dialogWish.findViewById(R.id.recyclewish);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(discover.this, LinearLayoutManager.VERTICAL, false));
+
+        recyclewish();
     }
 
     public void showBuy(String price) {
@@ -460,12 +464,9 @@ public class discover extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }
 
-    public void recycle(){
+    public void recyclewish(){
         try{
-        Log.w("recyclervvvv", "recyclerecycle");
-        recyclerView=(RecyclerView)dialogWish.findViewById(R.id.recyclewish);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(discover.this, LinearLayoutManager.VERTICAL, false));
+        Log.w("1111111111111", "recyclerecycle");
 
         formatWishAdapter=new formatWishAdapter(discover.this,formatWishList,onClickInterfaceFormat1);
         recyclerView.setAdapter(formatWishAdapter);
